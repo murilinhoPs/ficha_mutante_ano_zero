@@ -12,14 +12,18 @@ class AppWidget extends StatelessWidget {
         primarySwatch: Colors.amber,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: PageView(
-        controller: _pageController,
-        scrollDirection: Axis.vertical,
-        children: [
-          FirstPage(),
-          Container(color: Colors.lightBlue),
-          Container(color: Colors.lightGreen)
-        ],
+      home: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.only(top: 50.0),
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: [
+              FirstPage(),
+              Container(color: Colors.lightBlue),
+              Container(color: Colors.lightGreen)
+            ],
+          ),
+        ),
       ),
     );
   }

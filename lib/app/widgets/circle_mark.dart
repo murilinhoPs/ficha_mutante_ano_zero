@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TraumaMark extends StatefulWidget {
-  TraumaMark({Key key}) : super(key: key);
+class CircleMark extends StatefulWidget {
+  CircleMark({Key key}) : super(key: key);
 
   @override
-  _TraumaMarkState createState() => _TraumaMarkState();
+  _CircleMarkState createState() => _CircleMarkState();
 }
 
-class _TraumaMarkState extends State<TraumaMark> {
+class _CircleMarkState extends State<CircleMark> {
   bool clicked = false;
 
   @override

@@ -1,29 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
-import 'package:pdf_mutant/app/widgets/trauma_mark.dart';
+import 'package:pdf_mutant/app/widgets/circle_mark.dart';
 
 class Atributes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BoxContainer(
+      bottom: myDefaultBorder,
       child: Column(
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(7.0),
-                child: Text(
-                  'ATRIBUTOS',
-                  style: Theme.of(context).textTheme.headline4,
+          Container(
+            color: Color(0xff784622).withOpacity(0.9),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: Text(
+                    'ATRIBUTOS',
+                    style: TextStyle(
+                        fontSize: 32,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Icon(Icons.warning, size: 32.0),
-              ),
-            ],
+                Container(
+                  margin: const EdgeInsets.all(7.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25.0),
+                    color: Colors.yellow,
+                  ),
+                  padding: const EdgeInsets.all(7.0),
+                  child: Icon(
+                    Icons.warning,
+                    size: 30.0,
+                  ),
+                ),
+              ],
+            ),
           ),
           atributo(nome: 'Força', efeito: 'Dano'),
           atributo(nome: 'Agilidade', efeito: 'Fadiga'),
@@ -51,13 +66,14 @@ class Atributes extends StatelessWidget {
                   Text(nome),
                   Container(
                     alignment: Alignment.centerRight,
-                    height: 30.0,
+                    height: 34.0,
                     width: 40.0,
                     color: Colors.white,
                     child: TextField(
                       cursorColor: Colors.black,
                       decoration: InputDecoration(
                         fillColor: Colors.cyan,
+                        contentPadding: const EdgeInsets.all(5.0),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.zero,
                           borderSide: BorderSide(color: Colors.black87),
@@ -98,10 +114,10 @@ class Atributes extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TraumaMark(),
-                TraumaMark(),
-                TraumaMark(),
-                TraumaMark()
+                CircleMark(),
+                CircleMark(),
+                CircleMark(),
+                CircleMark()
               ],
             ),
           )
