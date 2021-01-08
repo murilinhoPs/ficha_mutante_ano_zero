@@ -43,8 +43,6 @@ class _LargeInputState extends State<LargeInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 15.0),
-      alignment: Alignment.centerRight,
       height: widget.height,
       width: widget.width,
       child: TextField(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/atributes.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/conditions.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/name_basics.dart';
+import 'package:pdf_mutant/app/modules/firstPage/wdigets/skills.dart';
 
 class FirstPage extends StatelessWidget {
   @override
@@ -11,6 +12,7 @@ class FirstPage extends StatelessWidget {
         BasicInfos(),
         Atributes(),
         Conditions(),
+        Skills(),
       ],
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/modules/firstPage/first_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -10,19 +9,27 @@ class AppWidget extends StatelessWidget {
       title: 'Mutant Pdf',
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.only(top: 50.0),
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            children: [
-              FirstPage(),
-              Container(color: Colors.lightBlue),
-              Container(color: Colors.lightGreen)
-            ],
-          ),
+        backgroundColor: Colors.grey[300],
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                children: [
+                  Container(
+                    color: Colors.white10,
+                    child: Image(
+                      image: AssetImage('assets/logo.png'),
+                      width: double.infinity,
+                    ),
+                  ),
+                  FirstPage()
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -28,39 +28,42 @@ class Atributes extends StatelessWidget {
   }
 
   Widget atributo({@required String nome, @required String efeito}) {
-    return Container(
-      color: AppColors.orange,
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            flex: 3,
-            child: Container(
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    nome,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+    return BoxContainer(
+      top: BorderSide(width: 1.5),
+      child: Container(
+        color: AppColors.orange,
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              flex: 3,
+              child: Container(
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      nome,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                      ),
                     ),
-                  ),
-                  SmallInput(keySharedPrefs: nome)
-                ],
+                    SmallInput(keySharedPrefs: nome)
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            color: Colors.black,
-            width: .4,
-            height: 61,
-          ),
-          traumaAtribute(efeito, flex: 5)
-        ],
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              color: Colors.black,
+              width: 1.4,
+              height: 61,
+            ),
+            traumaAtribute(efeito, flex: 5)
+          ],
+        ),
       ),
     );
   }

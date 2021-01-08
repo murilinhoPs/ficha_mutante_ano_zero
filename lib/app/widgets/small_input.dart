@@ -8,6 +8,7 @@ class SmallInput extends StatefulWidget {
   final double width;
   final String hintText;
   final String keySharedPrefs;
+  final Color bgColor;
 
   const SmallInput({
     Key key,
@@ -15,6 +16,7 @@ class SmallInput extends StatefulWidget {
     this.width = 40,
     this.hintText = '',
     this.keySharedPrefs = 'input-none1',
+    this.bgColor = AppColors.textOrange,
   }) : super(key: key);
 
   @override
@@ -47,7 +49,7 @@ class _SmallInputState extends State<SmallInput> {
       alignment: Alignment.centerRight,
       height: widget.height,
       width: widget.width,
-      color: AppColors.textOrange,
+      color: widget.bgColor,
       child: TextField(
         style: TextStyle(fontSize: 18.0),
         controller: controller,

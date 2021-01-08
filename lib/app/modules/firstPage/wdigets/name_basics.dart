@@ -36,6 +36,7 @@ class BasicInfos extends StatelessWidget {
             child: Row(
               children: [
                 inputTitle("Nome"),
+                SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'name',
                   hintText: 'nome do personagem',
@@ -50,6 +51,7 @@ class BasicInfos extends StatelessWidget {
             child: Row(
               children: [
                 inputTitle("Idade"),
+                SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'age',
                   hintText: 'Número',
@@ -75,6 +77,7 @@ class BasicInfos extends StatelessWidget {
             child: Row(
               children: [
                 inputTitle("Papel"),
+                SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'role',
                   hintText: 'papel do personagem',
