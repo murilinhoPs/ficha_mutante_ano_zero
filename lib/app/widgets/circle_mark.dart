@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pdf_mutant/app/global/colors.dart';
+import 'package:pdf_mutant/app/global/services/local_db.dart';
 
 class CircleMark extends StatefulWidget {
-  CircleMark({Key key}) : super(key: key);
+  final String keySharedPrefs;
+
+  CircleMark({Key key, this.keySharedPrefs = "none"}) : super(key: key);
 
   @override
   _CircleMarkState createState() => _CircleMarkState();
@@ -10,18 +14,33 @@ class CircleMark extends StatefulWidget {
 class _CircleMarkState extends State<CircleMark> {
   bool clicked = false;
 
+  void initState() {
+    getData();
+    super.initState();
+  }
+
+  void saveDataOnClick() async {
+    setState(() => clicked = !clicked);
+
+    await LocalDatabase.setItemBool(widget.keySharedPrefs, clicked);
+  }
+
+  void getData() async {
+    final prefBool = await LocalDatabase.getItem(widget.keySharedPrefs);
+
+    setState(() => clicked = prefBool ?? false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() => clicked = !clicked);
-      },
+      onTap: saveDataOnClick,
       child: Container(
-        margin: const EdgeInsets.all(10.0),
+        margin: const EdgeInsets.all(7.0),
         width: 25.0,
         height: 25.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.textOrange,
           borderRadius: BorderRadius.circular(50.0),
         ),
         alignment: Alignment.center,

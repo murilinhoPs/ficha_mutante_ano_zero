@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
 import 'package:pdf_mutant/app/widgets/circle_mark.dart';
+import 'package:pdf_mutant/app/widgets/content_header.dart';
+import 'package:pdf_mutant/app/widgets/small_input.dart';
 
 class Atributes extends StatelessWidget {
   @override
@@ -8,41 +11,16 @@ class Atributes extends StatelessWidget {
     return BoxContainer(
       bottom: myDefaultBorder,
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            color: Color(0xff784622).withOpacity(0.9),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(7.0),
-                  child: Text(
-                    'ATRIBUTOS',
-                    style: TextStyle(
-                        fontSize: 32,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(7.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25.0),
-                    color: Colors.yellow,
-                  ),
-                  padding: const EdgeInsets.all(7.0),
-                  child: Icon(
-                    Icons.warning,
-                    size: 30.0,
-                  ),
-                ),
-              ],
-            ),
+          ContentHeader(
+            title: 'atributos',
+            icon: Icons.warning_amber_sharp,
+            iconBackground: AppColors.yellow,
           ),
           atributo(nome: 'Força', efeito: 'Dano'),
           atributo(nome: 'Agilidade', efeito: 'Fadiga'),
-          atributo(nome: 'Astúcia', efeito: 'Confusão'),
+          atributo(nome: 'Astúcia', efeito: 'Confuso'),
           atributo(nome: 'Empatia', efeito: 'Dúvida'),
         ],
       ),
@@ -51,36 +29,26 @@ class Atributes extends StatelessWidget {
 
   Widget atributo({@required String nome, @required String efeito}) {
     return Container(
-      color: Colors.orange[400],
-      padding: EdgeInsets.symmetric(horizontal: 12.0),
+      color: AppColors.orange,
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Container(
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(nome),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    height: 34.0,
-                    width: 40.0,
-                    color: Colors.white,
-                    child: TextField(
-                      cursorColor: Colors.black,
-                      decoration: InputDecoration(
-                        fillColor: Colors.cyan,
-                        contentPadding: const EdgeInsets.all(5.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.zero,
-                          borderSide: BorderSide(color: Colors.black87),
-                        ),
-                      ),
+                  Text(
+                    nome,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
                     ),
-                  )
+                  ),
+                  SmallInput(keySharedPrefs: nome)
                 ],
               ),
             ),
@@ -88,7 +56,7 @@ class Atributes extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             color: Colors.black,
-            width: .5,
+            width: .4,
             height: 61,
           ),
           traumaAtribute(efeito, flex: 5)
@@ -99,27 +67,24 @@ class Atributes extends StatelessWidget {
 
   Widget traumaAtribute(String efeito, {int flex = 1}) {
     return Expanded(
-      flex: 5,
+      flex: flex,
       child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            flex: 1,
-            child: Text(
-              efeito,
-            ),
+          Text(
+            efeito,
+            style: TextStyle(fontSize: 16.0),
           ),
-          Expanded(
-            flex: 3,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleMark(),
-                CircleMark(),
-                CircleMark(),
-                CircleMark()
-              ],
-            ),
+          Flex(
+            mainAxisAlignment: MainAxisAlignment.center,
+            direction: Axis.horizontal,
+            children: [
+              CircleMark(keySharedPrefs: efeito + '0'),
+              CircleMark(keySharedPrefs: efeito + '1'),
+              CircleMark(keySharedPrefs: efeito + '2'),
+              CircleMark(keySharedPrefs: efeito + '3'),
+            ],
           )
         ],
       ),

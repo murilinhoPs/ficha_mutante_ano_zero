@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/modules/firstPage/first_page.dart';
 
 class AppWidget extends StatelessWidget {
-  final _pageController = PageController(initialPage: 0);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Mutant Pdf',
       theme: ThemeData(
         primarySwatch: Colors.amber,
