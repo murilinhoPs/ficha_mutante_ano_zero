@@ -20,7 +20,7 @@ class Atributes extends StatelessWidget {
           ),
           atributo(nome: 'Força', efeito: 'Dano'),
           atributo(nome: 'Agilidade', efeito: 'Fadiga'),
-          atributo(nome: 'Astúcia', efeito: 'Confuso'),
+          atributo(nome: 'Astúcia', efeito: 'Confusão'),
           atributo(nome: 'Empatia', efeito: 'Dúvida'),
         ],
       ),
@@ -32,31 +32,28 @@ class Atributes extends StatelessWidget {
       top: BorderSide(width: 1.5),
       child: Container(
         color: AppColors.orange,
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 6.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              flex: 3,
-              child: Container(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      nome,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                      ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    nome,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
                     ),
-                    SmallInput(keySharedPrefs: nome)
-                  ],
-                ),
+                  ),
+                  SmallInput(
+                    keySharedPrefs: nome,
+                  )
+                ],
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.only(left: 6.0, right: 8.0),
               color: Colors.black,
               width: 1.4,
               height: 61,
@@ -69,19 +66,21 @@ class Atributes extends StatelessWidget {
   }
 
   Widget traumaAtribute(String efeito, {int flex = 1}) {
-    return Expanded(
-      flex: flex,
+    return Container(
       child: Row(
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            efeito,
-            style: TextStyle(fontSize: 16.0),
+          SizedBox(
+            width: 65,
+            child: Text(
+              efeito,
+              textWidthBasis: TextWidthBasis.parent,
+            ),
           ),
-          Flex(
-            mainAxisAlignment: MainAxisAlignment.center,
-            direction: Axis.horizontal,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            // direction: Axis.horizontal,
             children: [
               CircleMark(keySharedPrefs: efeito + '0'),
               CircleMark(keySharedPrefs: efeito + '1'),

@@ -31,7 +31,7 @@ class ContentHeader extends StatelessWidget {
             child: Text(
               title.toUpperCase(),
               style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 28,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
@@ -46,7 +46,7 @@ class ContentHeader extends StatelessWidget {
                   padding: const EdgeInsets.all(7.0),
                   child: Icon(
                     icon,
-                    size: 30.0,
+                    size: 26.0,
                   ),
                 )
               : SizedBox(height: 57.7, width: 57.7)

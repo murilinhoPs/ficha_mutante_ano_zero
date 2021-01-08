@@ -55,7 +55,7 @@ class BasicInfos extends StatelessWidget {
                 LargeInput(
                   keySharedPrefs: 'age',
                   hintText: 'Número',
-                  width: 45.0,
+                  width: 35.0,
                 ),
               ],
             ),
@@ -88,7 +88,10 @@ class BasicInfos extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: Text("Mutant logo"),
+            child: Image(
+              image: AssetImage('assets/logo.png'),
+              height: 30,
+            ),
           ),
         ],
       ),
@@ -98,7 +101,7 @@ class BasicInfos extends StatelessWidget {
   Widget inputTitle(String name) {
     return Text(
       name,
-      style: TextStyle(fontSize: 22.0),
+      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
     );
   }
 }

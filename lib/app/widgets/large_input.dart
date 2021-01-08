@@ -7,15 +7,19 @@ class LargeInput extends StatefulWidget {
   final int maxLines;
   final String hintText;
   final String keySharedPrefs;
+  final FontWeight fontWeight;
+  final FontStyle fontStyle;
 
-  const LargeInput({
-    Key key,
-    this.maxLines = 1,
-    this.height = 50.0,
-    this.width,
-    @required this.hintText,
-    this.keySharedPrefs = "input-none",
-  }) : super(key: key);
+  const LargeInput(
+      {Key key,
+      this.maxLines = 1,
+      this.height = 50.0,
+      this.width,
+      @required this.hintText,
+      this.keySharedPrefs = "input-none",
+      this.fontWeight = FontWeight.normal,
+      this.fontStyle = FontStyle.normal})
+      : super(key: key);
 
   @override
   _LargeInputState createState() => _LargeInputState();
@@ -46,7 +50,11 @@ class _LargeInputState extends State<LargeInput> {
       height: widget.height,
       width: widget.width,
       child: TextField(
-        style: TextStyle(fontSize: 18.0),
+        style: TextStyle(
+          fontSize: 18.0,
+          fontWeight: widget.fontWeight,
+          fontStyle: widget.fontStyle,
+        ),
         controller: controller,
         onChanged: (_) => saveData(),
         onEditingComplete: saveData,

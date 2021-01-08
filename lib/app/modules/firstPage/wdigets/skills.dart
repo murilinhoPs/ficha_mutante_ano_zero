@@ -46,8 +46,10 @@ class Skills extends StatelessWidget {
           children: [
             nome == 'custom'
                 ? LargeInput(
-                    hintText: 'Perícia de especialista',
                     keySharedPrefs: nome + index.toString(),
+                    hintText: 'Perícia de especialista',
+                    fontWeight: FontWeight.w600,
+                    fontStyle: FontStyle.italic,
                     width: 200,
                     height: 35,
                   )

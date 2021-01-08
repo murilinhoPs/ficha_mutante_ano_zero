@@ -45,8 +45,6 @@ class _SmallInputState extends State<SmallInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 15.0),
-      alignment: Alignment.centerRight,
       height: widget.height,
       width: widget.width,
       color: widget.bgColor,
