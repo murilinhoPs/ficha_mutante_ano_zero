@@ -22,9 +22,7 @@ class Skills extends StatelessWidget {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: SkillList.skills.length,
-            itemBuilder: (context, index) {
-              return skillItem(SkillList.skills[index], index);
-            },
+            itemBuilder: (context, index) => skillItem(SkillList.skills[index], index),
           ),
         ],
       ),
@@ -47,7 +45,7 @@ class Skills extends StatelessWidget {
             nome == 'custom'
                 ? LargeInput(
                     keySharedPrefs: nome + index.toString(),
-                    hintText: 'Perícia de especialista',
+                    hintText: 'Escreva sua perícia ...',
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.italic,
                     width: 200,
@@ -62,9 +60,7 @@ class Skills extends StatelessWidget {
                   ),
             SmallInput(
               keySharedPrefs: nome,
-              bgColor: nome == 'custom'
-                  ? AppColors.lightTextOrange
-                  : AppColors.textOrange,
+              bgColor: nome == 'custom' ? AppColors.lightTextOrange : AppColors.textOrange,
             ),
           ],
         ),

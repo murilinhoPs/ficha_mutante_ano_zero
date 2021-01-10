@@ -15,6 +15,5 @@ class SkillList {
     'custom',
     'custom',
     'custom',
-    'custom',
   ];
 }

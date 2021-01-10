@@ -12,8 +12,8 @@ class Conditions extends StatelessWidget {
       bottom: myDefaultBorder,
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            maxHeight: double
-                .infinity //put here the max height to which you need to resize the textbox
+            maxHeight:
+                double.infinity //put here the max height to which you need to resize the textbox
             ),
         child: Flex(
           direction: Axis.vertical,
@@ -28,7 +28,7 @@ class Conditions extends StatelessWidget {
                 color: AppColors.darkGrey,
               ),
               bottom: myDefaultBorder,
-              child: conditionsGrid(),
+              child: conditionsGrid(context),
             ),
             wounds()
           ],
@@ -37,13 +37,13 @@ class Conditions extends StatelessWidget {
     );
   }
 
-  Widget conditionsGrid() {
+  Widget conditionsGrid(BuildContext context) {
     return Container(
       color: AppColors.orange,
       child: GridView.count(
         crossAxisCount: 2,
         shrinkWrap: true,
-        childAspectRatio: 3.6,
+        childAspectRatio: MediaQuery.of(context).size.aspectRatio * 6.6, //3.6,
         physics: NeverScrollableScrollPhysics(),
         children: [
           BoxContainer(

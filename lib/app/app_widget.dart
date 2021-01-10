@@ -6,7 +6,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Mutant Pdf',
+      title: 'Ficha Ma0',
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),

@@ -54,8 +54,8 @@ class BasicInfos extends StatelessWidget {
                 SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'age',
-                  hintText: 'Número',
-                  width: 35.0,
+                  hintText: '18...',
+                  width: 40.0,
                 ),
               ],
             ),

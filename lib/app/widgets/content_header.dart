@@ -19,7 +19,7 @@ class ContentHeader extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [AppColors.darkBrown, AppColors.lightBrown],
-          stops: [0.3, 0.8],
+          stops: [0.3, 0.9],
         ),
       ),
       child: Row(
@@ -30,10 +30,7 @@ class ContentHeader extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               title.toUpperCase(),
-              style: TextStyle(
-                  fontSize: 28,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
           icon != null
