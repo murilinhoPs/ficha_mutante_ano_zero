@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/atributes.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/conditions.dart';
+import 'package:pdf_mutant/app/modules/firstPage/wdigets/equipments/armor.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/name_basics.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/points.dart';
 import 'package:pdf_mutant/app/modules/firstPage/wdigets/skills.dart';
@@ -14,6 +15,7 @@ class FirstPage extends StatelessWidget {
         Atributes(),
         Conditions(),
         Skills(),
+        Equipments(),
         Points(),
       ],
     );

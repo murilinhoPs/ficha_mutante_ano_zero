@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/global/services/local_db.dart';
 
 class SmallInput extends StatefulWidget {
+  final String keySharedPrefs;
+  final String hintText;
+  final bool hasBorder;
   final double height;
   final double width;
-  final String hintText;
-  final String keySharedPrefs;
   final Color bgColor;
 
   const SmallInput({
@@ -17,6 +19,7 @@ class SmallInput extends StatefulWidget {
     this.hintText = '',
     this.keySharedPrefs = 'input-none1',
     this.bgColor = AppColors.textOrange,
+    this.hasBorder = true,
   }) : super(key: key);
 
   @override
@@ -49,25 +52,28 @@ class _SmallInputState extends State<SmallInput> {
       width: widget.width,
       color: widget.bgColor,
       child: TextField(
-        style: TextStyle(fontSize: 18.0),
         controller: controller,
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(1),
-        ],
+        style: TextStyle(fontSize: 18.0),
+        maxLength: 1,
+        keyboardType: TextInputType.number,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         onChanged: (_) => saveData(),
-        onEditingComplete: saveData,
+        onEditingComplete: () => saveData(),
         cursorColor: AppColors.orangeAccent,
         decoration: InputDecoration(
+          counterText: '',
           focusColor: AppColors.orangeAccent,
           contentPadding: const EdgeInsets.symmetric(
             vertical: 5.0,
-            horizontal: 15,
+            horizontal: 12,
           ),
           hintText: widget.hintText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.zero,
-            borderSide: BorderSide(color: Colors.black87),
-          ),
+          border: widget.hasBorder
+              ? OutlineInputBorder(
+                  borderRadius: BorderRadius.zero,
+                  borderSide: BorderSide(color: Colors.black87),
+                )
+              : InputBorder.none,
         ),
       ),
     );

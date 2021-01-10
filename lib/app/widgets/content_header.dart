@@ -5,12 +5,18 @@ class ContentHeader extends StatelessWidget {
   final String title;
   final IconData icon;
   final Color iconBackground;
+  final Color iconColor;
+  final double fontSize;
+  final double padding;
 
   const ContentHeader({
-    Key key,
     @required this.title,
-    this.icon,
     this.iconBackground,
+    this.iconColor,
+    this.fontSize,
+    this.padding,
+    this.icon,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -19,7 +25,7 @@ class ContentHeader extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [AppColors.darkBrown, AppColors.lightBrown],
-          stops: [0.3, 0.9],
+          stops: [0.3, 0.95],
         ),
       ),
       child: Row(
@@ -27,10 +33,14 @@ class ContentHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(padding ?? 8.0),
             child: Text(
               title.toUpperCase(),
-              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: fontSize ?? 28,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           icon != null
@@ -44,9 +54,10 @@ class ContentHeader extends StatelessWidget {
                   child: Icon(
                     icon,
                     size: 26.0,
+                    color: iconColor ?? Colors.black,
                   ),
                 )
-              : SizedBox(height: 57.7, width: 57.7)
+              : SizedBox(height: 0)
         ],
       ),
     );

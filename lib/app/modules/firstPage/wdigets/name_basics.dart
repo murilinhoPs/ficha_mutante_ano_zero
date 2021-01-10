@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
+import 'package:pdf_mutant/app/widgets/input_title.dart';
 import 'package:pdf_mutant/app/widgets/large_input.dart';
 
 class BasicInfos extends StatelessWidget {
@@ -35,7 +36,7 @@ class BasicInfos extends StatelessWidget {
             flex: 2,
             child: Row(
               children: [
-                inputTitle("Nome"),
+                InputTitle("Nome"),
                 SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'name',
@@ -50,7 +51,7 @@ class BasicInfos extends StatelessWidget {
             flex: 1,
             child: Row(
               children: [
-                inputTitle("Idade"),
+                InputTitle("Idade"),
                 SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'age',
@@ -76,7 +77,7 @@ class BasicInfos extends StatelessWidget {
             flex: 2,
             child: Row(
               children: [
-                inputTitle("Papel"),
+                InputTitle("Papel"),
                 SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'role',
@@ -98,7 +99,7 @@ class BasicInfos extends StatelessWidget {
     );
   }
 
-  Widget inputTitle(String name) {
+  Widget inputTitle(String name, {double fontSize = 20.0, Color fontColor}) {
     return Text(
       name,
       style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),

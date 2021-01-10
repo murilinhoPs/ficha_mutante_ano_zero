@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-const myDefaultBorder =
-    BorderSide(color: Colors.black, width: 2.0, style: BorderStyle.solid);
+const myDefaultBorder = BorderSide(color: Colors.black, width: 2.3, style: BorderStyle.solid);
 
 class BoxContainer extends StatelessWidget {
   final Widget child;
