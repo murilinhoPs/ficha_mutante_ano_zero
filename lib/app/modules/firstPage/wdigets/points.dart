@@ -25,13 +25,16 @@ class Points extends StatelessWidget {
         ContentHeader(title: title, fontSize: 24.0),
         Container(
           color: AppColors.orange,
+          padding: EdgeInsets.symmetric(horizontal: 1.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(
               10,
               (index) => CircleMark(
                 keySharedPrefs: 'title+$index',
+                margin: 5.0,
               ),
+              growable: false,
             ),
           ),
         ),

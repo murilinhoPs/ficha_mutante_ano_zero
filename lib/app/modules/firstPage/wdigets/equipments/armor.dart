@@ -42,12 +42,10 @@ class Equipments extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           alignment: Alignment.center,
           color: AppColors.lightBrown,
-          child: Expanded(
-            child: InputTitle(
-              'Proteção',
-              fontSize: 22.0,
-              fontColor: AppColors.lightTextOrange,
-            ),
+          child: InputTitle(
+            'Proteção',
+            fontSize: 22.0,
+            fontColor: AppColors.lightTextOrange,
           ),
         )
       ],

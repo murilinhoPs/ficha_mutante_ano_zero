@@ -4,8 +4,9 @@ import 'package:pdf_mutant/app/global/services/local_db.dart';
 
 class CircleMark extends StatefulWidget {
   final String keySharedPrefs;
+  final double margin;
 
-  CircleMark({Key key, this.keySharedPrefs = "none"}) : super(key: key);
+  CircleMark({Key key, this.keySharedPrefs = "none", this.margin}) : super(key: key);
 
   @override
   _CircleMarkState createState() => _CircleMarkState();
@@ -36,7 +37,7 @@ class _CircleMarkState extends State<CircleMark> {
     return GestureDetector(
       onTap: saveDataOnClick,
       child: Container(
-        margin: const EdgeInsets.all(7.0),
+        margin: EdgeInsets.all(widget.margin ?? 7.0),
         width: 25.0,
         height: 25.0,
         decoration: BoxDecoration(
