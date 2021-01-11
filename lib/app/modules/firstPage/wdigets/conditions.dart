@@ -12,8 +12,8 @@ class Conditions extends StatelessWidget {
       bottom: myDefaultBorder,
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            maxHeight:
-                double.infinity //put here the max height to which you need to resize the textbox
+            maxHeight: double
+                .infinity //put here the max height to which you need to resize the textbox
             ),
         child: Flex(
           direction: Axis.vertical,
@@ -41,8 +41,10 @@ class Conditions extends StatelessWidget {
     return Container(
       color: AppColors.orange,
       child: GridView.count(
+        padding: EdgeInsets.zero,
         crossAxisCount: 2,
         shrinkWrap: true,
+
         childAspectRatio: MediaQuery.of(context).size.aspectRatio * 6.6, //3.6,
         physics: NeverScrollableScrollPhysics(),
         children: [

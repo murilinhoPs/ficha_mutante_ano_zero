@@ -19,10 +19,12 @@ class Skills extends StatelessWidget {
             iconBackground: AppColors.green,
           ),
           ListView.builder(
+            padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             itemCount: SkillList.skills.length,
-            itemBuilder: (context, index) => skillItem(SkillList.skills[index], index),
+            itemBuilder: (context, index) =>
+                skillItem(SkillList.skills[index], index),
           ),
         ],
       ),
@@ -60,7 +62,9 @@ class Skills extends StatelessWidget {
                   ),
             SmallInput(
               keySharedPrefs: nome,
-              bgColor: nome == 'custom' ? AppColors.lightTextOrange : AppColors.textOrange,
+              bgColor: nome == 'custom'
+                  ? AppColors.lightTextOrange
+                  : AppColors.textOrange,
             ),
           ],
         ),
