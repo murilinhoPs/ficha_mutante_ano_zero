@@ -22,7 +22,7 @@ class Skills extends StatelessWidget {
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: SkillList.skills.length,
+            itemCount: 15,
             itemBuilder: (context, index) =>
                 skillItem(SkillList.skills[index], index),
           ),

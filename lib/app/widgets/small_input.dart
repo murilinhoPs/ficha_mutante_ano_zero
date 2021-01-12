@@ -10,12 +10,14 @@ class SmallInput extends StatefulWidget {
   final bool hasBorder;
   final double height;
   final double width;
+  final int inputLenght;
   final Color bgColor;
 
   const SmallInput({
     Key key,
     this.height = 35.0,
     this.width = 40,
+    this.inputLenght = 1,
     this.hintText = '',
     this.keySharedPrefs = 'input-none1',
     this.bgColor = AppColors.textOrange,
@@ -54,7 +56,7 @@ class _SmallInputState extends State<SmallInput> {
       child: TextField(
         controller: controller,
         style: TextStyle(fontSize: 18.0),
-        maxLength: 1,
+        maxLength: widget.inputLenght,
         keyboardType: TextInputType.number,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         onChanged: (_) => saveData(),

@@ -44,7 +44,6 @@ class Conditions extends StatelessWidget {
         padding: EdgeInsets.zero,
         crossAxisCount: 2,
         shrinkWrap: true,
-
         childAspectRatio: MediaQuery.of(context).size.aspectRatio * 6.6, //3.6,
         physics: NeverScrollableScrollPhysics(),
         children: [
@@ -94,7 +93,7 @@ class Conditions extends StatelessWidget {
       color: AppColors.lightOrange,
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
       child: Column(
-        mainAxisSize: MainAxisSize.max,
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -109,12 +108,10 @@ class Conditions extends StatelessWidget {
               ),
             ],
           ),
-          Expanded(
-            child: LargeInput(
-              hintText: 'Escreva seus ferimentos',
-              maxLines: 5,
-              keySharedPrefs: 'wounds',
-            ),
+          LargeInput(
+            hintText: 'Escreva seus ferimentos',
+            maxLines: 5,
+            keySharedPrefs: 'wounds',
           ),
         ],
       ),

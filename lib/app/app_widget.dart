@@ -1,11 +1,13 @@
 // import 'dart:html' as html;
 import 'dart:io';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf_mutant/app/modules/firstPage/first_page.dart';
+import 'package:pdf_mutant/app/widgets/custom_snackbar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -47,31 +49,23 @@ class _AppWidgetState extends State<AppWidget> {
   }
 
   void _printScreen(context) async {
-    if (Platform.isIOS)
-      Printing.sharePdf(
-          bytes: await _generatePdf(PdfPageFormat.a5),
-          filename: 'fichaMutantAnoZero.pdf');
-    else if (Platform.isAndroid) {
+    if (Platform.isAndroid || Platform.isIOS) {
       var status = await Permission.storage.request();
 
-      print(status);
-
       if (status == PermissionStatus.granted) {
-        await ImageGallerySaver.saveImage(await _imageFile.readAsBytes(),
-            quality: 80, name: "fichaMutantAnoZero");
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            padding: const EdgeInsets.all(8.0),
-            content: Text('Imagem salva na galeria!'),
-          ),
+        await ImageGallerySaver.saveImage(
+          await _imageFile.readAsBytes(),
+          quality: 100,
+          name: "fichaMutantAnoZero " +
+              (Random().nextInt(900000) + 10000).toString(),
         );
+
+        ScaffoldMessenger.of(context)
+            .showSnackBar(CustomSnack.build(context, 'Salvo na galeria!'));
       } else
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            padding: const EdgeInsets.all(8.0),
-            content:
-                Text('Não foi possível salvar na galeria, permissão negada'),
-          ),
+          CustomSnack.build(
+              context, 'Não foi possível salvar na galeria, permissão negada'),
         );
     } else
       Printing.layoutPdf(
@@ -101,14 +95,15 @@ class _AppWidgetState extends State<AppWidget> {
               });
         },
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Screenshot(
-            controller: screenshotController,
-            child: Column(
-              children: [
-                Container(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Screenshot(
+          controller: screenshotController,
+          child: Column(
+            children: [
+              SafeArea(
+                bottom: false,
+                child: Container(
                   color: Colors.white10,
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: Image(
@@ -116,9 +111,10 @@ class _AppWidgetState extends State<AppWidget> {
                     width: 600,
                   ),
                 ),
-                FirstPage(),
-              ],
-            ),
+              ),
+              FirstPage(),
+              SizedBox(height: 10.0)
+            ],
           ),
         ),
       ),

@@ -10,16 +10,16 @@ class LargeInput extends StatefulWidget {
   final FontWeight fontWeight;
   final FontStyle fontStyle;
 
-  const LargeInput(
-      {Key key,
-      this.maxLines = 1,
-      this.height = 50.0,
-      this.width,
-      @required this.hintText,
-      this.keySharedPrefs = "input-none",
-      this.fontWeight = FontWeight.normal,
-      this.fontStyle = FontStyle.normal})
-      : super(key: key);
+  const LargeInput({
+    Key key,
+    this.maxLines = 1,
+    this.height = 50.0,
+    this.width,
+    @required this.hintText,
+    this.keySharedPrefs = "input-none",
+    this.fontWeight = FontWeight.normal,
+    this.fontStyle = FontStyle.normal,
+  }) : super(key: key);
 
   @override
   _LargeInputState createState() => _LargeInputState();

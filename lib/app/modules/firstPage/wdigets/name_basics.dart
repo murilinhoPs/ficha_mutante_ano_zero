@@ -3,6 +3,7 @@ import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
 import 'package:pdf_mutant/app/widgets/input_title.dart';
 import 'package:pdf_mutant/app/widgets/large_input.dart';
+import 'package:pdf_mutant/app/widgets/small_input.dart';
 
 class BasicInfos extends StatelessWidget {
   @override
@@ -52,12 +53,16 @@ class BasicInfos extends StatelessWidget {
             child: Row(
               children: [
                 InputTitle("Idade"),
-                SizedBox(width: 15),
-                LargeInput(
+                SizedBox(width: 10),
+                SmallInput(
                   keySharedPrefs: 'age',
-                  hintText: '18...',
-                  width: 40.0,
-                ),
+                  bgColor: Colors.transparent,
+                  hasBorder: false,
+                  width: 45.0,
+                  height: 50.0,
+                  hintText: '18',
+                  inputLenght: 2,
+                )
               ],
             ),
           ),
