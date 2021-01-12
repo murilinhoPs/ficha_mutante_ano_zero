@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/global/colors.dart';
+import 'package:pdf_mutant/app/modules/firstPage/wdigets/wounds.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
 import 'package:pdf_mutant/app/widgets/circle_mark.dart';
 import 'package:pdf_mutant/app/widgets/content_header.dart';
-import 'package:pdf_mutant/app/widgets/large_input.dart';
 
-class Conditions extends StatelessWidget {
+class Conditions extends StatefulWidget {
+  @override
+  _ConditionsState createState() => _ConditionsState();
+}
+
+class _ConditionsState extends State<Conditions> {
   @override
   Widget build(BuildContext context) {
     return BoxContainer(
@@ -30,7 +35,7 @@ class Conditions extends StatelessWidget {
               bottom: myDefaultBorder,
               child: conditionsGrid(context),
             ),
-            wounds()
+            Wounds(),
           ],
         ),
       ),
@@ -82,37 +87,6 @@ class Conditions extends StatelessWidget {
             ),
           ),
           CircleMark(keySharedPrefs: name),
-        ],
-      ),
-    );
-  }
-
-  Widget wounds() {
-    return Container(
-      height: 160,
-      color: AppColors.lightOrange,
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Ferimentos Graves:',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                ),
-              ),
-            ],
-          ),
-          LargeInput(
-            hintText: 'Escreva seus ferimentos',
-            maxLines: 5,
-            keySharedPrefs: 'wounds',
-          ),
         ],
       ),
     );

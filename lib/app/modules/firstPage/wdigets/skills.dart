@@ -3,8 +3,8 @@ import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/global/skills_list.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
 import 'package:pdf_mutant/app/widgets/content_header.dart';
-import 'package:pdf_mutant/app/widgets/large_input.dart';
-import 'package:pdf_mutant/app/widgets/small_input.dart';
+import 'package:pdf_mutant/app/widgets/text_inputs/large_input.dart';
+import 'package:pdf_mutant/app/widgets/text_inputs/small_input.dart';
 
 class Skills extends StatelessWidget {
   @override

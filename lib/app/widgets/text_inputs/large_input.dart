@@ -14,7 +14,7 @@ class LargeInput extends StatefulWidget {
     Key key,
     this.maxLines = 1,
     this.height = 50.0,
-    this.width,
+    this.width = 40.0,
     @required this.hintText,
     this.keySharedPrefs = "input-none",
     this.fontWeight = FontWeight.normal,
@@ -57,7 +57,6 @@ class _LargeInputState extends State<LargeInput> {
         ),
         controller: controller,
         onChanged: (_) => saveData(),
-        onEditingComplete: saveData,
         maxLines: widget.maxLines,
         cursorColor: Colors.black,
         decoration: InputDecoration(

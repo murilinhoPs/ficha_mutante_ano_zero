@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
-import 'package:pdf_mutant/app/widgets/input_title.dart';
-import 'package:pdf_mutant/app/widgets/large_input.dart';
-import 'package:pdf_mutant/app/widgets/small_input.dart';
+import 'package:pdf_mutant/app/widgets/text_inputs/input_title.dart';
+import 'package:pdf_mutant/app/widgets/text_inputs/large_input.dart';
+import 'package:pdf_mutant/app/widgets/text_inputs/small_input.dart';
 
 class BasicInfos extends StatelessWidget {
   @override
