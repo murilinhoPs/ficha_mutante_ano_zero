@@ -2,24 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/global/colors.dart';
 import 'package:pdf_mutant/app/widgets/text_inputs/resizible_input.dart';
 
-class Wounds extends StatefulWidget {
-  @override
-  _WoundsState createState() => _WoundsState();
-}
-
-class _WoundsState extends State<Wounds> {
-  double _containerHeight = 100;
-
-  changeHeight(name) {
-    print('_containerHeight');
-
-    setState(() {
-      _containerHeight += 20;
-    });
-
-    print(_containerHeight);
-  }
-
+class Wounds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

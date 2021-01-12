@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/global/colors.dart';
-import 'package:pdf_mutant/app/modules/firstPage/wdigets/wounds.dart';
+import 'package:pdf_mutant/app/modules/firstPage/wdigets/conditions/wounds.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
 import 'package:pdf_mutant/app/widgets/circle_mark.dart';
 import 'package:pdf_mutant/app/widgets/content_header.dart';
