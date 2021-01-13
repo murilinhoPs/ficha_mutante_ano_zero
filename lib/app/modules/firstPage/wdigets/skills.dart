@@ -33,7 +33,7 @@ class Skills extends StatelessWidget {
 
   Widget skillItem(String nome, int index, {Color color = AppColors.orange}) {
     return BoxContainer(
-      top: BorderSide(width: 1.5),
+      top: BorderSide(width: 2, color: AppColors.darkGrey.withOpacity(0.8)),
       child: Container(
         color: nome == 'custom' ? AppColors.lightOrange : AppColors.orange,
         padding: const EdgeInsets.symmetric(

@@ -58,13 +58,14 @@ class _ResizibleInputState extends State<ResizibleInput> {
         int currentLines =
             (textPainter.height / textPainter.preferredLineHeight).ceil();
 
-        int maxLines = 5;
+        int maxLines = 7;
 
         return TextField(
           controller: controller,
           onChanged: (_) => saveData(),
           maxLines: currentLines < maxLines ? null : maxLines,
           cursorColor: Colors.black,
+          textInputAction: TextInputAction.none,
           decoration: InputDecoration(
             hintText: widget.hintText,
             border: InputBorder.none,

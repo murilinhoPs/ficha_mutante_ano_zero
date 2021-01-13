@@ -28,7 +28,7 @@ class Wounds extends StatelessWidget {
             hintText: 'Escreva seus ferimentos',
             keySharedPrefs: 'wounds',
           )
-        ],
+        ], // one ok rock
       ),
     );
   }

@@ -16,8 +16,8 @@ class SmallInput extends StatefulWidget {
   const SmallInput({
     Key key,
     this.height = 35.0,
-    this.width = 40,
-    this.inputLenght = 1,
+    this.width = 45,
+    this.inputLenght = 2,
     this.hintText = '',
     this.keySharedPrefs = 'input-none1',
     this.bgColor = AppColors.textOrange,

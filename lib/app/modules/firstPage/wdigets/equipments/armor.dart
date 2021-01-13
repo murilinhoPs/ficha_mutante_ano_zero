@@ -6,7 +6,7 @@ import 'package:pdf_mutant/app/widgets/text_inputs/input_title.dart';
 import 'package:pdf_mutant/app/widgets/text_inputs/large_input.dart';
 import 'package:pdf_mutant/app/widgets/text_inputs/small_input.dart';
 
-class Equipments extends StatelessWidget {
+class Armor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BoxContainer(
@@ -71,6 +71,7 @@ class Equipments extends StatelessWidget {
           ),
           Positioned(
             right: 120,
+            bottom: 0,
             child: customDivider(),
           ),
           Positioned(

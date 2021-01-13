@@ -1,4 +1,3 @@
-// import 'dart:html' as html;
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
@@ -8,6 +7,7 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf_mutant/app/modules/firstPage/first_page.dart';
 import 'package:pdf_mutant/app/widgets/custom_snackbar.dart';
+import 'package:pdf_mutant/app/widgets/step_progress_bar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -22,6 +22,8 @@ class _AppWidgetState extends State<AppWidget> {
   final screenshotController = ScreenshotController();
 
   File _imageFile;
+
+  int count = 0;
 
   Future<Uint8List> _generatePdf(PdfPageFormat format) async {
     final doc = pw.Document();
@@ -78,43 +80,65 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save_alt),
-        onPressed: () {
-          screenshotController
-              .capture()
-              .then((File image) {
-                //Capture Done
-                setState(() {
-                  _imageFile = image;
-                });
-              })
-              .then((value) => _printScreen(context))
-              .catchError((onError) {
-                print(onError);
-              });
-        },
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            child: Icon(Icons.save_alt),
+            onPressed: () {
+              screenshotController
+                  .capture()
+                  .then((File image) {
+                    //Capture Done
+                    setState(() {
+                      _imageFile = image;
+                    });
+                  })
+                  .then((value) => _printScreen(context))
+                  .catchError(
+                    (onError) {
+                      print(onError);
+                    },
+                  );
+            },
+          ),
+          SizedBox(width: 10.0),
+          FloatingActionButton(
+            child: Icon(Icons.remove),
+            onPressed: () {
+              if (count > 0) setState(() => count--);
+            },
+          ),
+          SizedBox(width: 10.0),
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () => setState(() => count++),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Screenshot(
           controller: screenshotController,
-          child: Column(
-            children: [
-              SafeArea(
-                bottom: false,
-                child: Container(
-                  color: Colors.white10,
+          child: SafeArea(
+            child: Column(
+              children: [
+                Container(
+                  width: 600,
+                  color: Colors.grey[300],
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: Image(
                     image: AssetImage('assets/logo.png'),
-                    width: 600,
                   ),
                 ),
-              ),
-              FirstPage(),
-              SizedBox(height: 10.0)
-            ],
+                StepProgressBar(
+                  totalSteps: 10,
+                  currentStep: count,
+                ),
+                FirstPage(),
+              ],
+            ),
           ),
         ),
       ),
