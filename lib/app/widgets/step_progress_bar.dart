@@ -39,7 +39,7 @@ class StepProgressBar extends StatelessWidget {
           itemCount: totalSteps,
           separatorBuilder: (context, index) =>
               SizedBox(width: isSeparated ? separatedWidth : 0.0),
-          itemBuilder: (context, position) {
+          itemBuilder: (context, index) {
             return Container(
               width: (screenWidth - (leftPadding + rightPadding)) / totalSteps,
               decoration: BoxDecoration(
@@ -48,7 +48,7 @@ class StepProgressBar extends StatelessWidget {
               child: Container(
                 height: 10,
                 decoration: BoxDecoration(
-                  color: currentStep > position
+                  color: currentStep > index
                       ? selectedColor.withRed(255)
                       : unselectedColor.withOpacity(0.3),
                 ),

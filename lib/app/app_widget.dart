@@ -80,42 +80,24 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            child: Icon(Icons.save_alt),
-            onPressed: () {
-              screenshotController
-                  .capture()
-                  .then((File image) {
-                    //Capture Done
-                    setState(() {
-                      _imageFile = image;
-                    });
-                  })
-                  .then((value) => _printScreen(context))
-                  .catchError(
-                    (onError) {
-                      print(onError);
-                    },
-                  );
-            },
-          ),
-          SizedBox(width: 10.0),
-          FloatingActionButton(
-            child: Icon(Icons.remove),
-            onPressed: () {
-              if (count > 0) setState(() => count--);
-            },
-          ),
-          SizedBox(width: 10.0),
-          FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () => setState(() => count++),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.save_alt),
+        onPressed: () {
+          screenshotController
+              .capture()
+              .then((File image) {
+                //Capture Done
+                setState(() {
+                  _imageFile = image;
+                });
+              })
+              .then((value) => _printScreen(context))
+              .catchError(
+                (onError) {
+                  print(onError);
+                },
+              );
+        },
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -132,10 +114,10 @@ class _AppWidgetState extends State<AppWidget> {
                     image: AssetImage('assets/logo.png'),
                   ),
                 ),
-                StepProgressBar(
-                  totalSteps: 10,
-                  currentStep: count,
-                ),
+                // StepProgressBar(
+                //   totalSteps: 10,
+                //   currentStep: count,
+                // ),
                 FirstPage(),
               ],
             ),
