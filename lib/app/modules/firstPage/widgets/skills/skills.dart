@@ -35,6 +35,7 @@ class _SkillsState extends State<Skills> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
+                    verticalDirection: VerticalDirection.down,
                     textDirection: TextDirection.rtl,
                     children: [
                       Icon(
@@ -61,7 +62,7 @@ class _SkillsState extends State<Skills> {
           ),
           AnimatedContainer(
             color: AppColors.lightOrange,
-            height: seeMore ? 96 : MediaQuery.of(context).size.height - 190,
+            height: seeMore ? 95 : 704,
             duration: Duration(seconds: 1),
             curve: Curves.easeInOutBack,
             child: SkillItens(),
