@@ -4,7 +4,7 @@ import 'package:pdf_mutant/app/modules/firstPage/widgets/conditions/conditions.d
 import 'package:pdf_mutant/app/modules/firstPage/widgets/equipments/all_equips.dart';
 import 'package:pdf_mutant/app/modules/firstPage/widgets/name_basics.dart';
 import 'package:pdf_mutant/app/modules/firstPage/widgets/points.dart';
-import 'package:pdf_mutant/app/modules/firstPage/widgets/skills.dart';
+import 'package:pdf_mutant/app/modules/firstPage/widgets/skills/skills.dart';
 
 class FirstPage extends StatelessWidget {
   @override

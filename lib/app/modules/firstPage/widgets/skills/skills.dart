@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:pdf_mutant/app/global/colors.dart';
+import 'package:pdf_mutant/app/modules/firstPage/widgets/skills/skill_itens.dart';
+import 'package:pdf_mutant/app/widgets/box_container.dart';
+import 'package:pdf_mutant/app/widgets/content_header.dart';
+
+class Skills extends StatefulWidget {
+  @override
+  _SkillsState createState() => _SkillsState();
+}
+
+class _SkillsState extends State<Skills> {
+  bool seeMore = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return BoxContainer(
+      bottom: myDefaultBorder,
+      child: Column(
+        children: [
+          InkWell(
+            hoverColor: Colors.red,
+            onTap: () => setState(() => seeMore = !seeMore),
+            child: Stack(
+              children: [
+                ContentHeader(
+                  title: 'Perícias',
+                  icon: Icons.dangerous,
+                  iconBackground: AppColors.green,
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 54,
+                  right: 0,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    textDirection: TextDirection.rtl,
+                    children: [
+                      Icon(
+                        seeMore
+                            ? Icons.arrow_circle_down_rounded
+                            : Icons.arrow_circle_up_rounded,
+                        color: AppColors.lightTextOrange,
+                        size: 30,
+                      ),
+                      SizedBox(width: 2.5),
+                      Text(
+                        seeMore ? 'Ver +' : 'Ver -',
+                        style: TextStyle(
+                          color: AppColors.lightTextOrange,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          AnimatedContainer(
+            color: AppColors.lightOrange,
+            height: seeMore ? 96 : MediaQuery.of(context).size.height - 190,
+            duration: Duration(seconds: 1),
+            curve: Curves.easeInOutBack,
+            child: SkillItens(),
+          )
+        ],
+      ),
+    );
+  }
+}

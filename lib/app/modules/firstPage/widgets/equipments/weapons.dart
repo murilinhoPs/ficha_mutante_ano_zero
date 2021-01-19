@@ -126,9 +126,9 @@ class Weapons extends StatelessWidget {
 class LinesPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final offset1 = 170 * (size.width / 440);
-    final offset2 = 253.3 * (size.width / 440);
-    final offset3 = 340.6 * (size.width / 440);
+    final offset1 = 170 * (size.width / 426);
+    final offset2 = 253.3 * (size.width / 424);
+    final offset3 = 340.6 * (size.width / 430);
 
     final paintWhite = Paint()..color = Colors.transparent;
     var rrectWhite = RRect.fromLTRBR(

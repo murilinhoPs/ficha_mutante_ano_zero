@@ -7,7 +7,6 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf_mutant/app/modules/firstPage/first_page.dart';
 import 'package:pdf_mutant/app/widgets/custom_snackbar.dart';
-import 'package:pdf_mutant/app/widgets/step_progress_bar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:printing/printing.dart';
 import 'package:pdf/widgets.dart' as pw;
