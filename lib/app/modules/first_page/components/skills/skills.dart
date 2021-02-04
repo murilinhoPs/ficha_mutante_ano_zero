@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/app/global/colors.dart';
-import 'package:pdf_mutant/app/modules/firstPage/widgets/skills/skill_itens.dart';
+import 'package:pdf_mutant/app/modules/first_page/components/skills/skill_itens.dart';
 import 'package:pdf_mutant/app/widgets/box_container.dart';
 import 'package:pdf_mutant/app/widgets/content_header.dart';
 
@@ -39,9 +39,7 @@ class _SkillsState extends State<Skills> {
                     textDirection: TextDirection.rtl,
                     children: [
                       Icon(
-                        seeMore
-                            ? Icons.arrow_circle_down_rounded
-                            : Icons.arrow_circle_up_rounded,
+                        seeMore ? Icons.arrow_circle_down_rounded : Icons.arrow_circle_up_rounded,
                         color: AppColors.lightTextOrange,
                         size: 30,
                       ),

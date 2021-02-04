@@ -5,7 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:pdf/pdf.dart';
-import 'package:pdf_mutant/app/modules/firstPage/first_page.dart';
+import 'package:pdf_mutant/app/modules/first_page/first_page.dart';
 import 'package:pdf_mutant/app/widgets/custom_snackbar.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:printing/printing.dart';
@@ -57,16 +57,13 @@ class _AppWidgetState extends State<AppWidget> {
         await ImageGallerySaver.saveImage(
           await _imageFile.readAsBytes(),
           quality: 100,
-          name: "fichaMutantAnoZero " +
-              (Random().nextInt(900000) + 10000).toString(),
+          name: "fichaMutantAnoZero " + (Random().nextInt(900000) + 10000).toString(),
         );
 
-        ScaffoldMessenger.of(context)
-            .showSnackBar(CustomSnack.build(context, 'Salvo na galeria!'));
+        ScaffoldMessenger.of(context).showSnackBar(CustomSnack.build(context, 'Salvo na galeria!'));
       } else
         ScaffoldMessenger.of(context).showSnackBar(
-          CustomSnack.build(
-              context, 'Não foi possível salvar na galeria, permissão negada'),
+          CustomSnack.build(context, 'Não foi possível salvar na galeria, permissão negada'),
         );
     } else
       Printing.layoutPdf(
@@ -117,7 +114,7 @@ class _AppWidgetState extends State<AppWidget> {
                 //   totalSteps: 10,
                 //   currentStep: count,
                 // ),
-                FirstPage(),
+                first_page(),
               ],
             ),
           ),
