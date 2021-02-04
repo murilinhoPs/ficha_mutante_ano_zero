@@ -114,7 +114,7 @@ class _AppWidgetState extends State<AppWidget> {
                 //   totalSteps: 10,
                 //   currentStep: count,
                 // ),
-                first_page(),
+                FirstPage(),
               ],
             ),
           ),
