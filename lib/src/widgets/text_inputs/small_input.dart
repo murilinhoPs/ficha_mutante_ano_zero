@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/global/services/local_db.dart';
+import 'package:pdf_mutant/src/global/services/local_storage/local_storage_wrapper.dart';
 
 class SmallInput extends StatefulWidget {
   final String keySharedPrefs;
@@ -36,13 +36,14 @@ class _SmallInputState extends State<SmallInput> {
     super.initState();
   }
 
-  void saveData() async => await LocalDatabase.setItemString(
+  void saveData() async => await LocalStorageWrapper.setItemString(
         widget.keySharedPrefs,
         controller.text,
       );
 
   void getData() async {
-    final prefTextInput = await LocalDatabase.getItem(widget.keySharedPrefs);
+    final prefTextInput =
+        await LocalStorageWrapper.getItem(widget.keySharedPrefs);
 
     setState(() => controller.text = prefTextInput ?? "");
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/global/services/local_db.dart';
+import 'package:pdf_mutant/src/global/services/local_storage/local_storage_wrapper.dart';
 
 class CircleMark extends StatefulWidget {
   final String keySharedPrefs;
@@ -24,11 +24,11 @@ class _CircleMarkState extends State<CircleMark> {
   void saveDataOnClick() async {
     setState(() => clicked = !clicked);
 
-    await LocalDatabase.setItemBool(widget.keySharedPrefs, clicked);
+    await LocalStorageWrapper.setItemBool(widget.keySharedPrefs, clicked);
   }
 
   void getData() async {
-    final prefBool = await LocalDatabase.getItem(widget.keySharedPrefs);
+    final prefBool = await LocalStorageWrapper.getItem(widget.keySharedPrefs);
 
     setState(() => clicked = prefBool ?? false);
   }

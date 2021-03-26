@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/services/local_db.dart';
+import 'package:pdf_mutant/src/global/services/local_storage/local_storage_wrapper.dart';
 
 class ResizibleInput extends StatefulWidget {
   final String hintText;
@@ -29,13 +29,14 @@ class _ResizibleInputState extends State<ResizibleInput> {
     super.initState();
   }
 
-  void saveData() async => await LocalDatabase.setItemString(
+  void saveData() async => await LocalStorageWrapper.setItemString(
         widget.keySharedPrefs,
         controller.text,
       );
 
   void getData() async {
-    final prefTextInput = await LocalDatabase.getItem(widget.keySharedPrefs);
+    final prefTextInput =
+        await LocalStorageWrapper.getItem(widget.keySharedPrefs);
 
     setState(() => controller.text = prefTextInput ?? "");
   }
