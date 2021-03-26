@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "pdf_mutant")
-set(APPLICATION_ID "com.example.pdf_mutant")
+set(BINARY_NAME "ficha_ma0")
+set(APPLICATION_ID "com.example.ficha_ma0")
 
 cmake_policy(SET CMP0063 NEW)
 

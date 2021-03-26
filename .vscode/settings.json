@@ -1,0 +1,9 @@
+{
+    "dart.flutterSdkPaths": [
+        "/home/murilinhops/fvm/versions/dev",
+        ".fvm/flutter_sdk",
+        "/home/murilinhops/dev/flutter"
+    ],
+    "dart.flutterSdkPath": "/home/murilinhops/dev/flutter",
+    
+}
