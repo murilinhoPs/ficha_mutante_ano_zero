@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf_mutant/src/global/colors.dart';
 import 'package:pdf_mutant/src/modules/first_page/components/conditions/wounds.dart';
 import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/circle_mark.dart';
+import 'package:pdf_mutant/src/widgets/circle_mark/circle_mark.dart';
 import 'package:pdf_mutant/src/widgets/content_header.dart';
 
 class Conditions extends StatefulWidget {
@@ -86,7 +86,10 @@ class _ConditionsState extends State<Conditions> {
               fontSize: 16.0,
             ),
           ),
-          CircleMark(keySharedPrefs: name),
+          CircleMark(
+            keySharedPrefs: name,
+            margin: 10.0,
+          ),
         ],
       ),
     );
