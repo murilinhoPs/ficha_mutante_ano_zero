@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pdf_mutant/src/global/colors.dart';
 import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/circle_mark.dart';
+import 'package:pdf_mutant/src/widgets/circle_mark/circle_marks_wrapper.dart';
 import 'package:pdf_mutant/src/widgets/content_header.dart';
 import 'package:pdf_mutant/src/widgets/text_inputs/small_input.dart';
 
@@ -78,16 +78,11 @@ class Atributes extends StatelessWidget {
               textWidthBasis: TextWidthBasis.parent,
             ),
           ),
-          Row(
+          CircleMarksWrapper(
+            itemsCount: 4,
+            parentName: efeito,
             mainAxisAlignment: MainAxisAlignment.start,
-            // direction: Axis.horizontal,
-            children: [
-              CircleMark(keySharedPrefs: efeito + '0'),
-              CircleMark(keySharedPrefs: efeito + '1'),
-              CircleMark(keySharedPrefs: efeito + '2'),
-              CircleMark(keySharedPrefs: efeito + '3'),
-            ],
-          )
+          ),
         ],
       ),
     );
