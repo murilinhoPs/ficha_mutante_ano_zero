@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:pdf/pdf.dart';
+import 'package:pdf_mutant/src/global/colors.dart';
 import 'package:pdf_mutant/src/modules/first_page/first_page.dart';
 import 'package:pdf_mutant/src/widgets/custom_snackbar.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -18,11 +19,20 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final screenshotController = ScreenshotController();
 
   File _imageFile;
 
   int count = 0;
+
+  void _openDrawer() {
+    _scaffoldKey.currentState.openDrawer();
+  }
+
+  void _closeDrawer() {
+    Navigator.of(context).pop();
+  }
 
   Future<Uint8List> _generatePdf(PdfPageFormat format) async {
     final doc = pw.Document();
@@ -81,6 +91,7 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.grey[300],
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save_alt),
@@ -96,6 +107,20 @@ class _AppWidgetState extends State<AppWidget> {
           }
         },
       ),
+      drawer: Drawer(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text('This is the Drawer'),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('Close Drawer'),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Screenshot(
@@ -105,10 +130,39 @@ class _AppWidgetState extends State<AppWidget> {
               children: [
                 Container(
                   width: 600,
-                  color: Colors.grey[300],
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Image(
-                    image: AssetImage('assets/logo.png'),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppColors.darkBrown,
+                        AppColors.orange.withRed(215),
+                      ],
+                      stops: [0.03, 1.2],
+                    ),
+                  ),
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.menu,
+                            color: AppColors.textOrange,
+                            size: 30.0,
+                          ),
+                          onPressed: _openDrawer,
+                          tooltip: MaterialLocalizations.of(context)
+                              .openAppDrawerTooltip,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image(
+                          height: 120,
+                          image: AssetImage('assets/logo.png'),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 FirstPage(),
