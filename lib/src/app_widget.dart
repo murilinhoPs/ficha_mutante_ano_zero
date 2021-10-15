@@ -3,7 +3,6 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
-import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
 import 'package:ficha_mutante_ano_zero/src/modules/first_page/first_page.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
@@ -95,24 +94,39 @@ class _AppWidgetState extends State<AppWidget> {
       key: _scaffoldKey,
       backgroundColor: Colors.grey[300],
       drawer: Drawer(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text('Outras sessões da ficha'),
-              ElevatedButton(
-                onPressed: _closeDrawer,
-                child: const Text('Close Drawer'),
-              ),
-            ],
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppColors.darkBrown,
+                AppColors.orange.withRed(215),
+              ],
+              stops: [0.03, 1.2],
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Outras sessões da ficha',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: _closeDrawer,
+                  child: const Text('Close Drawer'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save_alt),
         onPressed: () async {
-          LocalStorageWrapper.deleteAll();
-          return;
+          // LocalStorageWrapper.deleteAll();
           try {
             final image = await screenshotController.capture();
 
@@ -128,22 +142,22 @@ class _AppWidgetState extends State<AppWidget> {
           }
         },
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Screenshot(
-          controller: screenshotController,
-          child: Container(
-            width: 600,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  AppColors.darkBrown,
-                  AppColors.orange.withRed(215),
-                ],
-                stops: [0.03, 1.2],
-              ),
+      body: Screenshot(
+        controller: screenshotController,
+        child: Container(
+          width: 600,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppColors.darkBrown,
+                AppColors.orange.withRed(215),
+              ],
+              stops: [0.03, 1.2],
             ),
-            child: SafeArea(
+          ),
+          child: SafeArea(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
               child: Column(
                 children: [
                   Stack(
