@@ -14,7 +14,7 @@ class ContentHeader extends StatelessWidget {
     required this.title,
     this.iconBackground = Colors.transparent,
     this.iconColor = Colors.black,
-    this.fontSize = 28.0,
+    this.fontSize = 22.0,
     this.padding = 8.0,
     this.icon,
   }) : super(key: key);

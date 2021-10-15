@@ -11,7 +11,7 @@ class ResizableInput extends StatefulWidget {
   const ResizableInput({
     Key? key,
     required this.hintText,
-    this.fontSize = 18.0,
+    this.fontSize = 16.0,
     this.keySharedPrefs = "input-none",
     this.fontWeight = FontWeight.normal,
     this.fontStyle = FontStyle.normal,

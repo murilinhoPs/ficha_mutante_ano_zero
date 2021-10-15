@@ -53,7 +53,7 @@ class _LargeInputState extends State<LargeInput> {
       width: widget.width,
       child: TextField(
         style: TextStyle(
-          fontSize: 18.0,
+          fontSize: 16.0,
           fontWeight: widget.fontWeight,
           fontStyle: widget.fontStyle,
         ),

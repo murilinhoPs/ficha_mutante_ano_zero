@@ -56,7 +56,7 @@ class _SmallInputState extends State<SmallInput> {
       color: widget.bgColor,
       child: TextField(
         controller: controller,
-        style: TextStyle(fontSize: 18.0),
+        style: TextStyle(fontSize: 14),
         maxLength: widget.inputLenght,
         keyboardType: TextInputType.number,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
