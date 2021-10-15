@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/armor.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/armor/armor_inventory.dart';
 import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/weapons.dart';
 
 class AllEquipments extends StatelessWidget {
@@ -8,7 +8,7 @@ class AllEquipments extends StatelessWidget {
     return Column(
       children: [
         Weapons(),
-        Armor(),
+        ArmorInventory(),
       ],
     );
   }
