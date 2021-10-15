@@ -39,20 +39,22 @@ class BasicsInfo extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InputTitle(
                   inputName: "Nome",
                 ),
-                SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'name',
                   hintText: 'nome do personagem',
-                  width: 125,
+                  width: 150,
                 ),
               ],
             ),
           ),
-          SizedBox(width: 20.0),
+          SizedBox(
+            width: 8,
+          ),
           Expanded(
             flex: 1,
             child: Row(
@@ -60,15 +62,16 @@ class BasicsInfo extends StatelessWidget {
                 InputTitle(
                   inputName: "Idade",
                 ),
-                SizedBox(width: 10),
-                SmallInput(
-                  keySharedPrefs: 'age',
-                  bgColor: Colors.transparent,
-                  hasBorder: false,
-                  width: 45.0,
-                  height: 50.0,
-                  hintText: '18',
-                  inputLenght: 2,
+                Expanded(
+                  child: SmallInput(
+                    keySharedPrefs: 'age',
+                    bgColor: Colors.transparent,
+                    hasBorder: false,
+                    width: 50.0,
+                    height: 45.0,
+                    hintText: '18..',
+                    inputLenght: 2,
+                  ),
                 )
               ],
             ),
@@ -88,11 +91,11 @@ class BasicsInfo extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InputTitle(
                   inputName: "Papel",
                 ),
-                SizedBox(width: 15),
                 LargeInput(
                   keySharedPrefs: 'role',
                   hintText: 'papel do personagem',
@@ -105,9 +108,12 @@ class BasicsInfo extends StatelessWidget {
             flex: 1,
             child: Image(
               image: AssetImage('assets/logo.png'),
-              height: 30,
+              height: 40,
             ),
           ),
+          SizedBox(
+            width: 8,
+          )
         ],
       ),
     );

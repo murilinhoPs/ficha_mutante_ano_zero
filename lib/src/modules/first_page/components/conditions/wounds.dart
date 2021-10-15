@@ -19,12 +19,13 @@ class Wounds extends StatelessWidget {
                 'Ferimentos Graves:',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
+                  fontSize: 14.0,
                 ),
               ),
             ],
           ),
           ResizableInput(
+            fontSize: 14,
             hintText: 'Escreva seus ferimentos',
             keySharedPrefs: 'wounds',
           )

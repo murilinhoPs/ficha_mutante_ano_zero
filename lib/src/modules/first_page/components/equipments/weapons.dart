@@ -116,7 +116,7 @@ class Weapons extends StatelessWidget {
             title,
             style: TextStyle(
               color: AppColors.lightTextOrange,
-              fontSize: 18.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.bold,
             ),
           ),

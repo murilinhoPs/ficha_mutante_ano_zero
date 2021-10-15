@@ -22,7 +22,10 @@ class Points extends StatelessWidget {
   Widget pointSection(String title) {
     return Column(
       children: [
-        ContentHeader(title: title, fontSize: 24.0),
+        ContentHeader(
+          title: title,
+          fontSize: 20,
+        ),
         Container(
           color: AppColors.orange,
           padding: EdgeInsets.symmetric(horizontal: 1.0),

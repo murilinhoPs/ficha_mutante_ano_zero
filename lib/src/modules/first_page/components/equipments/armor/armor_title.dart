@@ -27,7 +27,7 @@ class ArmorTitle extends StatelessWidget {
             color: AppColors.lightBrown,
             child: InputTitle(
               inputName: 'Proteção',
-              fontSize: 22.0,
+              fontSize: 18.0,
               fontColor: AppColors.lightTextOrange,
             ),
           ),

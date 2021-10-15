@@ -84,7 +84,7 @@ class _ConditionsState extends State<Conditions> {
             name,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 16.0,
+              fontSize: 14.0,
             ),
           ),
           CircleMarksWrapper(
