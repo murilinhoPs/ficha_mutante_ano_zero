@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/content_header.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/input_title.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/large_input.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/small_input.dart';
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/content_header.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/input_title.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/large_input.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/small_input.dart';
 
 class Armor extends StatelessWidget {
   @override
@@ -44,7 +44,7 @@ class Armor extends StatelessWidget {
             alignment: Alignment.center,
             color: AppColors.lightBrown,
             child: InputTitle(
-              'Proteção',
+              inputName: 'Proteção',
               fontSize: 22.0,
               fontColor: AppColors.lightTextOrange,
             ),

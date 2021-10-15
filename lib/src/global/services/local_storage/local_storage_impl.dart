@@ -1,8 +1,8 @@
-import 'package:pdf_mutant/src/global/services/local_storage/local_storage.dart';
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageImpl implements LocalStorage {
-  SharedPreferences _prefs;
+  late SharedPreferences _prefs;
 
   @override
   Future getItem(String keyName) async {

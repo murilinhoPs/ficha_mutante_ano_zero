@@ -1,11 +1,11 @@
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_marks_wrapper.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/content_header.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/small_input.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/circle_mark/circle_marks_wrapper.dart';
-import 'package:pdf_mutant/src/widgets/content_header.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/small_input.dart';
 
-class Atributes extends StatelessWidget {
+class Attributes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BoxContainer(
@@ -27,7 +27,7 @@ class Atributes extends StatelessWidget {
     );
   }
 
-  Widget atributo({@required String nome, @required String efeito}) {
+  Widget atributo({required String nome, required String efeito}) {
     return BoxContainer(
       top: BorderSide(width: 1.5),
       child: Container(

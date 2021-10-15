@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/modules/first_page/components/equipments/armor.dart';
-import 'package:pdf_mutant/src/modules/first_page/components/equipments/weapons.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/armor.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/weapons.dart';
 
 class AllEquipments extends StatelessWidget {
   @override

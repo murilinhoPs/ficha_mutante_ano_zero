@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/global/skills_list.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/large_input.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/small_input.dart';
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/global/skills_list.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/large_input.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/small_input.dart';
 
 class SkillItens extends StatelessWidget {
   @override

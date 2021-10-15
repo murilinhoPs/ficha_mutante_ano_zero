@@ -1,27 +1,27 @@
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/services/local_storage/local_storage_wrapper.dart';
 
-class ResizibleInput extends StatefulWidget {
+class ResizableInput extends StatefulWidget {
   final String hintText;
   final String keySharedPrefs;
   final double fontSize;
   final FontWeight fontWeight;
   final FontStyle fontStyle;
 
-  const ResizibleInput({
-    Key key,
-    @required this.hintText,
-    this.keySharedPrefs = "input-none",
+  const ResizableInput({
+    Key? key,
+    required this.hintText,
     this.fontSize = 18.0,
+    this.keySharedPrefs = "input-none",
     this.fontWeight = FontWeight.normal,
     this.fontStyle = FontStyle.normal,
   }) : super(key: key);
 
   @override
-  _ResizibleInputState createState() => _ResizibleInputState();
+  _ResizableInputState createState() => _ResizableInputState();
 }
 
-class _ResizibleInputState extends State<ResizibleInput> {
+class _ResizableInputState extends State<ResizableInput> {
   final controller = TextEditingController();
 
   void initState() {
@@ -35,8 +35,9 @@ class _ResizibleInputState extends State<ResizibleInput> {
       );
 
   void getData() async {
-    final prefTextInput =
-        await LocalStorageWrapper.getItem(widget.keySharedPrefs);
+    final prefTextInput = await LocalStorageWrapper.getItem(
+      widget.keySharedPrefs,
+    );
 
     setState(() => controller.text = prefTextInput ?? "");
   }
@@ -64,9 +65,10 @@ class _ResizibleInputState extends State<ResizibleInput> {
         return TextField(
           controller: controller,
           onChanged: (_) => saveData(),
+          onEditingComplete: saveData,
           maxLines: currentLines < maxLines ? null : maxLines,
           cursorColor: Colors.black,
-          textInputAction: TextInputAction.none,
+          textInputAction: TextInputAction.newline,
           decoration: InputDecoration(
             hintText: widget.hintText,
             border: InputBorder.none,

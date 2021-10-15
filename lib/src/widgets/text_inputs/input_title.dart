@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class InputTitle extends StatelessWidget {
   final String inputName;
   final double fontSize;
-  final Color fontColor;
+  final Color? fontColor;
 
-  const InputTitle(
-    this.inputName, {
-    Key key,
-    this.fontSize,
+  const InputTitle({
+    Key? key,
+    required this.inputName,
     this.fontColor,
+    this.fontSize = 20.0,
   }) : super(key: key);
 
   @override
@@ -17,9 +17,9 @@ class InputTitle extends StatelessWidget {
     return Text(
       inputName,
       style: TextStyle(
-        fontSize: fontSize ?? 20.0,
+        fontSize: fontSize,
         fontWeight: FontWeight.bold,
-        color: fontColor ?? Theme.of(context).textTheme.bodyText1.color,
+        color: fontColor ?? Theme.of(context).textTheme.bodyText1!.color,
       ),
     );
   }

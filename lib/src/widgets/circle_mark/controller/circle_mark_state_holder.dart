@@ -5,7 +5,7 @@ class CircleMarkStateHolder {
 
   bool get hasClickedValue => hasClicked.value;
 
-  void setHasClicked({@required bool hasClicked}) {
+  void setHasClicked({required bool hasClicked}) {
     this.hasClicked.value = hasClicked;
   }
 }

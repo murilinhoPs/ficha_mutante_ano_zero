@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/resizible_input.dart';
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/resizible_input.dart';
 
 class Wounds extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class Wounds extends StatelessWidget {
               ),
             ],
           ),
-          ResizibleInput(
+          ResizableInput(
             hintText: 'Escreva seus ferimentos',
             keySharedPrefs: 'wounds',
           )

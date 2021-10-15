@@ -2,15 +2,16 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/first_page.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:pdf/pdf.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/modules/first_page/first_page.dart';
-import 'package:pdf_mutant/src/widgets/custom_snackbar.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:printing/printing.dart';
-import 'package:pdf/widgets.dart' as pw;
 import 'package:screenshot/screenshot.dart';
 
 class AppWidget extends StatefulWidget {
@@ -22,12 +23,10 @@ class _AppWidgetState extends State<AppWidget> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final screenshotController = ScreenshotController();
 
-  File _imageFile;
-
-  int count = 0;
+  late Uint8List _imageFile;
 
   void _openDrawer() {
-    _scaffoldKey.currentState.openDrawer();
+    _scaffoldKey.currentState?.openDrawer();
   }
 
   void _closeDrawer() {
@@ -37,7 +36,7 @@ class _AppWidgetState extends State<AppWidget> {
   Future<Uint8List> _generatePdf(PdfPageFormat format) async {
     final doc = pw.Document();
 
-    final image = pw.MemoryImage(_imageFile.readAsBytesSync());
+    final image = pw.MemoryImage(_imageFile);
 
     doc.addPage(
       pw.Page(
@@ -63,23 +62,25 @@ class _AppWidgetState extends State<AppWidget> {
     if (Platform.isAndroid || Platform.isIOS) {
       var status = await Permission.storage.request();
 
-      if (status == PermissionStatus.granted) {
-        await ImageGallerySaver.saveImage(
-          await _imageFile.readAsBytes(),
-          quality: 100,
-          name: "fichaMutantAnoZero " +
-              (Random().nextInt(900000) + 10000).toString(),
-        );
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          CustomSnack(message: 'Salvo na galeria!'),
-        );
-      } else
+      if (status == PermissionStatus.denied) {
         ScaffoldMessenger.of(context).showSnackBar(
           CustomSnack(
             message: 'Não foi possível salvar na galeria, permissão negada',
           ),
         );
+        return;
+      }
+
+      await ImageGallerySaver.saveImage(
+        _imageFile,
+        quality: 100,
+        name: "fichaMutantAnoZero " +
+            (Random().nextInt(900000) + 10000).toString(),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        CustomSnack(message: 'Salvo na galeria!'),
+      );
     } else {
       Printing.layoutPdf(
         onLayout: (PdfPageFormat format) async => await _generatePdf(format),
@@ -93,80 +94,89 @@ class _AppWidgetState extends State<AppWidget> {
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Colors.grey[300],
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save_alt),
-        onPressed: () async {
-          try {
-            final image = await screenshotController.capture();
-
-            setState(() => _imageFile = image);
-
-            _printScreen(context);
-          } catch (error) {
-            print(error);
-          }
-        },
-      ),
       drawer: Drawer(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text('This is the Drawer'),
+              const Text('Outras sessões da ficha'),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: _closeDrawer,
                 child: const Text('Close Drawer'),
               ),
             ],
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.save_alt),
+        onPressed: () async {
+          LocalStorageWrapper.deleteAll();
+          return;
+          try {
+            final image = await screenshotController.capture();
+
+            setState(() => _imageFile = image!);
+
+            _printScreen(context);
+          } catch (error) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              CustomSnack(
+                message: 'Não foi possível salvar na galeria.',
+              ),
+            );
+          }
+        },
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Screenshot(
           controller: screenshotController,
-          child: SafeArea(
-            child: Column(
-              children: [
-                Container(
-                  width: 600,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        AppColors.darkBrown,
-                        AppColors.orange.withRed(215),
-                      ],
-                      stops: [0.03, 1.2],
-                    ),
-                  ),
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: Stack(
+          child: Container(
+            width: 600,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.darkBrown,
+                  AppColors.orange.withRed(215),
+                ],
+                stops: [0.03, 1.2],
+              ),
+            ),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  Stack(
                     children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.menu,
-                            color: AppColors.textOrange,
-                            size: 30.0,
-                          ),
-                          onPressed: _openDrawer,
-                          tooltip: MaterialLocalizations.of(context)
-                              .openAppDrawerTooltip,
+                      Container(
+                        padding: EdgeInsets.only(
+                          top: 8.0,
+                          bottom: 12.0,
                         ),
-                      ),
-                      Align(
                         alignment: Alignment.center,
                         child: Image(
                           height: 120,
                           image: AssetImage('assets/logo.png'),
                         ),
                       ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.menu,
+                            color: AppColors.textOrange,
+                            size: 40.0,
+                          ),
+                          onPressed: _openDrawer,
+                          tooltip: MaterialLocalizations.of(context)
+                              .openAppDrawerTooltip,
+                        ),
+                      ),
                     ],
                   ),
-                ),
-                FirstPage(),
-              ],
+                  FirstPage(),
+                ],
+              ),
             ),
           ),
         ),

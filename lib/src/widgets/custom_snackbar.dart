@@ -4,7 +4,7 @@ class CustomSnack extends SnackBar {
   final String message;
 
   CustomSnack({
-    @required this.message,
+    required this.message,
   }) : super(
           content: Text(message),
           padding: const EdgeInsets.all(5.0),

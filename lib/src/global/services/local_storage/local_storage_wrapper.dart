@@ -1,7 +1,7 @@
-import 'package:pdf_mutant/src/global/services/local_storage/local_storage.dart';
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage.dart';
 
 class LocalStorageWrapper {
-  static LocalStorage _localStorage;
+  static late LocalStorage _localStorage;
 
   static void initLocalStorage(LocalStorage localStorage) {
     _localStorage = localStorage;
