@@ -1,4 +1,6 @@
 class SkillList {
+  static String keyToSaveList = 'SkillListSave';
+
   static List<String> skills = [
     'Atirar (Agilidade)',
     'Compreender (Astúcia)',
@@ -12,8 +14,6 @@ class SkillList {
     'Observar (Astúcia)',
     'Sentir Emoções (Empatia)',
     'Suportar (Força)',
-    'custom',
-    'custom',
     'custom',
   ];
 }
