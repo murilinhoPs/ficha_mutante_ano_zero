@@ -113,11 +113,11 @@ class _SkillItemsState extends State<SkillItems> {
                     nome,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+                      fontSize: 14.0,
                     ),
                   ),
             SmallInput(
-              keySharedPrefs: nome,
+              keySharedPrefs: 'nome-$index',
               bgColor: nome == 'custom'
                   ? AppColors.lightTextOrange
                   : AppColors.textOrange,
