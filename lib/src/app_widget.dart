@@ -26,6 +26,7 @@ class _AppWidgetState extends State<AppWidget> {
 
   void _openDrawer() {
     _scaffoldKey.currentState?.openDrawer();
+    FocusScope.of(context).requestFocus(FocusNode());
   }
 
   void _closeDrawer() {
@@ -91,6 +92,9 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      onDrawerChanged: (value) {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
       key: _scaffoldKey,
       backgroundColor: Colors.grey[300],
       drawer: Drawer(
@@ -123,24 +127,28 @@ class _AppWidgetState extends State<AppWidget> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.save_alt),
-        onPressed: () async {
-          // LocalStorageWrapper.deleteAll();
-          try {
-            final image = await screenshotController.capture();
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 28.0),
+        child: FloatingActionButton(
+          child: Icon(Icons.save_alt),
+          onPressed: () async {
+            // LocalStorageWrapper.deleteAll();
+            try {
+              final image = await screenshotController.capture();
 
-            setState(() => _imageFile = image!);
+              setState(() => _imageFile = image!);
 
-            _printScreen(context);
-          } catch (error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              CustomSnack(
-                message: 'Não foi possível salvar na galeria.',
-              ),
-            );
-          }
-        },
+              _printScreen(context);
+            } catch (error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                CustomSnack(
+                  message: 'Não foi possível salvar na galeria.',
+                ),
+              );
+            }
+          },
+        ),
       ),
       body: Screenshot(
         controller: screenshotController,
@@ -157,6 +165,7 @@ class _AppWidgetState extends State<AppWidget> {
           ),
           child: SafeArea(
             child: SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
