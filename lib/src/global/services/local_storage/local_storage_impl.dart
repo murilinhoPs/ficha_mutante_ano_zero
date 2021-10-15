@@ -14,6 +14,22 @@ class LocalStorageImpl implements LocalStorage {
   }
 
   @override
+  Future getStringList(String keyName) async {
+    _prefs = await SharedPreferences.getInstance();
+
+    final keyValue = _prefs.getStringList(keyName);
+
+    return keyValue;
+  }
+
+  @override
+  Future setListString(String keyName, List<String> keyValue) async {
+    _prefs = await SharedPreferences.getInstance();
+
+    return _prefs.setStringList(keyName, keyValue);
+  }
+
+  @override
   Future setItemString(String keyName, String keyValue) async {
     _prefs = await SharedPreferences.getInstance();
 

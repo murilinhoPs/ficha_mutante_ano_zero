@@ -13,6 +13,18 @@ class LocalStorageWrapper {
     return item;
   }
 
+  static Future getStringList(String keyName) async {
+    final item = await _localStorage.getStringList(keyName);
+
+    return item;
+  }
+
+  static Future setListString(String keyName, List<String> keyValue) async {
+    final item = await _localStorage.setListString(keyName, keyValue);
+
+    return item;
+  }
+
   static Future setItemString(String keyName, String keyValue) async {
     return await _localStorage.setItemString(keyName, keyValue);
   }
