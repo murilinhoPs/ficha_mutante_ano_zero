@@ -1,5 +1,6 @@
 import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
 import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_mark_changed_notification.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/controller/circle_mark_controller.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/controller/circle_mark_controller_impl.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +33,13 @@ class _CircleMarkState extends State<CircleMark> {
 
   void saveDataOnClick() {
     circleMarkController.onCircleMarkTapped();
+    CircleMarkChangedNotification(circleMarkController.hasClicked)
+        .dispatch(context);
 
-    // LocalStorageWrapper.setItemBool(
-    //   widget.keySharedPrefs,
-    //   circleMarkController.hasClicked,
-    // );
+    LocalStorageWrapper.setItemBool(
+      widget.keySharedPrefs,
+      circleMarkController.hasClicked,
+    );
   }
 
   void getData() async {
@@ -50,12 +53,10 @@ class _CircleMarkState extends State<CircleMark> {
     return GestureDetector(
       onTap: () {
         widget.onClickToSave();
-        print(widget.canSave);
 
         if (widget.canSave) {
           saveDataOnClick();
         }
-        //!widget.canSave ? widget.onClickCantSave : saveDataOnClick,
       },
       child: Container(
         margin: EdgeInsets.all(widget.margin),
