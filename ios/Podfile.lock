@@ -33,7 +33,7 @@ SPEC CHECKSUMS:
   image_gallery_saver: 259eab68fb271cfd57d599904f7acdc7832e7ef2
   permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
   printing: eafa00acb682c0ca029d4d98d0798f55a1e27102
-  shared_preferences: 5033afbb22d372e15aff8ff766df9021b845f273
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
