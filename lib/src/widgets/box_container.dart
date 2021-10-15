@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-const myDefaultBorder = BorderSide(color: Colors.black, width: 2.3, style: BorderStyle.solid);
+const myDefaultBorder = BorderSide(
+  color: Colors.black,
+  width: 2.3,
+  style: BorderStyle.solid,
+);
 
 class BoxContainer extends StatelessWidget {
   final Widget child;
@@ -8,11 +12,11 @@ class BoxContainer extends StatelessWidget {
   final BorderSide bottom;
   final BorderSide left;
   final BorderSide right;
-  final BorderSide all;
+  final BorderSide? all;
 
   const BoxContainer({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.top = BorderSide.none,
     this.bottom = BorderSide.none,
     this.left = BorderSide.none,

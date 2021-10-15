@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(pdf_mutant LANGUAGES CXX)
+project(ficha_mutante_ano_zero LANGUAGES CXX)
 
-set(BINARY_NAME "pdf_mutant")
+set(BINARY_NAME "ficha_mutante_ano_zero")
 
 cmake_policy(SET CMP0063 NEW)
 

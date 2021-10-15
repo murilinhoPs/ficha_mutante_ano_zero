@@ -1,19 +1,22 @@
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_mark_changed_notification.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/controller/circle_mark_controller.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/controller/circle_mark_controller_impl.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/global/services/local_storage/local_storage_wrapper.dart';
-import 'package:pdf_mutant/src/widgets/circle_mark/controller/circle_mark_controller.dart';
-import 'package:pdf_mutant/src/widgets/circle_mark/controller/circle_mark_controller_impl.dart';
 
 class CircleMark extends StatefulWidget {
-  final String keySharedPrefs;
   final double margin;
-  final bool activateGestureDetector;
+  final String keySharedPrefs;
+  final bool canSave;
+  final VoidCallback onClickToSave;
 
-  CircleMark({
-    Key key,
-    @required this.margin,
-    @required this.keySharedPrefs,
-    this.activateGestureDetector = true,
+  const CircleMark({
+    Key? key,
+    required this.margin,
+    required this.canSave,
+    required this.keySharedPrefs,
+    required this.onClickToSave,
   }) : super(key: key);
 
   @override
@@ -30,6 +33,8 @@ class _CircleMarkState extends State<CircleMark> {
 
   void saveDataOnClick() {
     circleMarkController.onCircleMarkTapped();
+    CircleMarkChangedNotification(circleMarkController.hasClicked)
+        .dispatch(context);
 
     LocalStorageWrapper.setItemBool(
       widget.keySharedPrefs,
@@ -46,7 +51,13 @@ class _CircleMarkState extends State<CircleMark> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.activateGestureDetector ? saveDataOnClick : null,
+      onTap: () {
+        widget.onClickToSave();
+
+        if (widget.canSave) {
+          saveDataOnClick();
+        }
+      },
       child: Container(
         margin: EdgeInsets.all(widget.margin),
         width: 25.0,

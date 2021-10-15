@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/app_widget.dart';
+import 'package:ficha_mutante_ano_zero/src/app_widget.dart';
 
 class AppModule extends StatelessWidget {
   @override

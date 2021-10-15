@@ -1,11 +1,11 @@
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_marks_wrapper.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/content_header.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/small_input.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/circle_mark/circle_marks_wrapper.dart';
-import 'package:pdf_mutant/src/widgets/content_header.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/small_input.dart';
 
-class Atributes extends StatelessWidget {
+class Attributes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BoxContainer(
@@ -19,7 +19,7 @@ class Atributes extends StatelessWidget {
             iconBackground: AppColors.yellow,
           ),
           atributo(nome: 'Força', efeito: 'Dano'),
-          atributo(nome: 'Agilidade', efeito: 'Fadiga'),
+          atributo(nome: 'Agilidade', efeito: 'Fadiga', fontSize: 12.4),
           atributo(nome: 'Astúcia', efeito: 'Confusão'),
           atributo(nome: 'Empatia', efeito: 'Dúvida'),
         ],
@@ -27,7 +27,8 @@ class Atributes extends StatelessWidget {
     );
   }
 
-  Widget atributo({@required String nome, @required String efeito}) {
+  Widget atributo(
+      {required String nome, required String efeito, double fontSize = 14}) {
     return BoxContainer(
       top: BorderSide(width: 1.5),
       child: Container(
@@ -43,6 +44,7 @@ class Atributes extends StatelessWidget {
                   Text(
                     nome,
                     style: TextStyle(
+                      fontSize: fontSize,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -65,17 +67,22 @@ class Atributes extends StatelessWidget {
     );
   }
 
-  Widget traumaAtribute(String efeito, {int flex = 1}) {
+  Widget traumaAtribute(
+    String efeito, {
+    int flex = 1,
+  }) {
     return Container(
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            width: 65,
+            width: 70,
             child: Text(
               efeito,
-              textWidthBasis: TextWidthBasis.parent,
+              style: TextStyle(
+                fontSize: 12.4,
+              ),
             ),
           ),
           CircleMarksWrapper(

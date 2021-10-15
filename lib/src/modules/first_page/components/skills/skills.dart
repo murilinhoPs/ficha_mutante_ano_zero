@@ -1,8 +1,9 @@
+import 'package:ficha_mutante_ano_zero/src/global/skills_list.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/modules/first_page/components/skills/skill_itens.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/content_header.dart';
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/skills/skill_itens.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/content_header.dart';
 
 class Skills extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class Skills extends StatefulWidget {
 
 class _SkillsState extends State<Skills> {
   bool seeMore = true;
+  bool changedListLength = false;
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +64,14 @@ class _SkillsState extends State<Skills> {
           ),
           AnimatedContainer(
             color: AppColors.lightOrange,
-            height: seeMore ? 95 : 704,
+            height: seeMore ? 95 : 52 * SkillList.skills.length.toDouble(),
             duration: Duration(seconds: 1),
             curve: Curves.easeInOutBack,
-            child: SkillItens(),
+            child: SkillItems(
+              updateList: () {
+                setState(() => changedListLength = true);
+              },
+            ),
           )
         ],
       ),

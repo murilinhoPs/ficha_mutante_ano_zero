@@ -1,9 +1,9 @@
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/conditions/wounds.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_marks_wrapper.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/content_header.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/modules/first_page/components/conditions/wounds.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/circle_mark/circle_mark.dart';
-import 'package:pdf_mutant/src/widgets/content_header.dart';
 
 class Conditions extends StatefulWidget {
   @override
@@ -49,7 +49,8 @@ class _ConditionsState extends State<Conditions> {
         padding: EdgeInsets.zero,
         crossAxisCount: 2,
         shrinkWrap: true,
-        childAspectRatio: MediaQuery.of(context).size.aspectRatio * 6.6, //3.6,
+        childAspectRatio: MediaQuery.of(context).size.aspectRatio * 6.6,
+        //3.6,
         physics: NeverScrollableScrollPhysics(),
         children: [
           BoxContainer(
@@ -83,12 +84,13 @@ class _ConditionsState extends State<Conditions> {
             name,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 16.0,
+              fontSize: 14.0,
             ),
           ),
-          CircleMark(
-            keySharedPrefs: name,
-            margin: 10.0,
+          CircleMarksWrapper(
+            itemsCount: 1,
+            parentName: 'conditions',
+            circleMarkMargin: 10.0,
           ),
         ],
       ),

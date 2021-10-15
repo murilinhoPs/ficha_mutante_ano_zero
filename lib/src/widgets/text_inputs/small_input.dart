@@ -1,8 +1,8 @@
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/global/services/local_storage/local_storage_wrapper.dart';
 
 class SmallInput extends StatefulWidget {
   final String keySharedPrefs;
@@ -14,7 +14,7 @@ class SmallInput extends StatefulWidget {
   final Color bgColor;
 
   const SmallInput({
-    Key key,
+    Key? key,
     this.height = 35.0,
     this.width = 45,
     this.inputLenght = 2,
@@ -56,12 +56,12 @@ class _SmallInputState extends State<SmallInput> {
       color: widget.bgColor,
       child: TextField(
         controller: controller,
-        style: TextStyle(fontSize: 18.0),
+        style: TextStyle(fontSize: 14),
         maxLength: widget.inputLenght,
         keyboardType: TextInputType.number,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         onChanged: (_) => saveData(),
-        onEditingComplete: () => saveData(),
+        onEditingComplete: saveData,
         cursorColor: AppColors.orangeAccent,
         decoration: InputDecoration(
           counterText: '',

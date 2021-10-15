@@ -1,7 +1,7 @@
-import 'package:pdf_mutant/src/global/services/local_storage/local_storage.dart';
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage.dart';
 
 class LocalStorageWrapper {
-  static LocalStorage _localStorage;
+  static late LocalStorage _localStorage;
 
   static void initLocalStorage(LocalStorage localStorage) {
     _localStorage = localStorage;
@@ -9,6 +9,18 @@ class LocalStorageWrapper {
 
   static Future getItem(String keyName) async {
     final item = await _localStorage.getItem(keyName);
+
+    return item;
+  }
+
+  static Future getStringList(String keyName) async {
+    final item = await _localStorage.getStringList(keyName);
+
+    return item;
+  }
+
+  static Future setListString(String keyName, List<String> keyValue) async {
+    final item = await _localStorage.setListString(keyName, keyValue);
 
     return item;
   }

@@ -1,11 +1,11 @@
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/input_title.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/large_input.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/small_input.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/input_title.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/large_input.dart';
-import 'package:pdf_mutant/src/widgets/text_inputs/small_input.dart';
 
-class BasicInfos extends StatelessWidget {
+class BasicsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +17,10 @@ class BasicInfos extends StatelessWidget {
           children: [
             nameAge(),
             BoxContainer(
-              top: BorderSide(color: Colors.grey[700], width: 1.0),
+              top: BorderSide(
+                color: Colors.grey[700]!,
+                width: 1.0,
+              ),
               child: role(),
             ),
           ],
@@ -36,32 +39,39 @@ class BasicInfos extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                InputTitle("Nome"),
-                SizedBox(width: 15),
+                InputTitle(
+                  inputName: "Nome",
+                ),
                 LargeInput(
                   keySharedPrefs: 'name',
                   hintText: 'nome do personagem',
-                  width: 125,
+                  width: 150,
                 ),
               ],
             ),
           ),
-          SizedBox(width: 20.0),
+          SizedBox(
+            width: 8,
+          ),
           Expanded(
             flex: 1,
             child: Row(
               children: [
-                InputTitle("Idade"),
-                SizedBox(width: 10),
-                SmallInput(
-                  keySharedPrefs: 'age',
-                  bgColor: Colors.transparent,
-                  hasBorder: false,
-                  width: 45.0,
-                  height: 50.0,
-                  hintText: '18',
-                  inputLenght: 2,
+                InputTitle(
+                  inputName: "Idade",
+                ),
+                Expanded(
+                  child: SmallInput(
+                    keySharedPrefs: 'age',
+                    bgColor: Colors.transparent,
+                    hasBorder: false,
+                    width: 50.0,
+                    height: 45.0,
+                    hintText: '18..',
+                    inputLenght: 2,
+                  ),
                 )
               ],
             ),
@@ -81,9 +91,11 @@ class BasicInfos extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                InputTitle("Papel"),
-                SizedBox(width: 15),
+                InputTitle(
+                  inputName: "Papel",
+                ),
                 LargeInput(
                   keySharedPrefs: 'role',
                   hintText: 'papel do personagem',
@@ -96,18 +108,27 @@ class BasicInfos extends StatelessWidget {
             flex: 1,
             child: Image(
               image: AssetImage('assets/logo.png'),
-              height: 30,
+              height: 40,
             ),
           ),
+          SizedBox(
+            width: 8,
+          )
         ],
       ),
     );
   }
 
-  Widget inputTitle(String name, {double fontSize = 20.0, Color fontColor}) {
+  Widget inputTitle(
+    String name, {
+    double fontSize = 20.0,
+  }) {
     return Text(
       name,
-      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+      style: TextStyle(
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }

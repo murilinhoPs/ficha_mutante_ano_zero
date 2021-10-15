@@ -1,6 +1,6 @@
+import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
 import 'package:flutter/material.dart';
-import 'package:pdf_mutant/src/global/colors.dart';
-import 'package:pdf_mutant/src/widgets/box_container.dart';
 
 class Weapons extends StatelessWidget {
   @override
@@ -59,7 +59,7 @@ class Weapons extends StatelessWidget {
                     ),
                     status(title: 'Bônus'),
                     status(title: 'Dano'),
-                    status(title: 'Alcance', border: BorderSide.none),
+                    status(title: 'Alcance'),
                   ],
                 ),
               ),
@@ -95,14 +95,17 @@ class Weapons extends StatelessWidget {
       left: left * (MediaQuery.of(context).size.width / 440),
       child: BoxContainer(
         right: myDefaultBorder,
-        child: null,
+        child: SizedBox(),
       ),
     );
   }
 
-  Widget status({@required String title, int flex, BorderSide border}) {
+  Widget status({
+    required String title,
+    int flex = 1,
+  }) {
     return Expanded(
-      flex: flex ?? 1,
+      flex: flex,
       child: Container(
         height: 55.0,
         alignment: Alignment(-0.5, 0.5),
@@ -113,7 +116,7 @@ class Weapons extends StatelessWidget {
             title,
             style: TextStyle(
               color: AppColors.lightTextOrange,
-              fontSize: 18.0,
+              fontSize: 16.0,
               fontWeight: FontWeight.bold,
             ),
           ),
