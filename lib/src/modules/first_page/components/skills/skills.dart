@@ -1,4 +1,5 @@
 import 'package:ficha_mutante_ano_zero/src/global/skills_list.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/skills/proficiencies/proficiencies.dart';
 import 'package:flutter/material.dart';
 import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
 import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/skills/skill_itens.dart';
@@ -72,7 +73,8 @@ class _SkillsState extends State<Skills> {
                 setState(() => changedListLength = true);
               },
             ),
-          )
+          ),
+          Proficiencies(),
         ],
       ),
     );
