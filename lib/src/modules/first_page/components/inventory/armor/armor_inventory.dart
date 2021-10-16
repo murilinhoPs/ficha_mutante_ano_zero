@@ -1,7 +1,7 @@
 import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
 import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
-import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/armor/armor_item.dart';
-import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/armor/armor_title.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/inventory/armor/armor_item.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/inventory/armor/armor_title.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/buttons/add_primary_button.dart';
 import 'package:flutter/material.dart';
