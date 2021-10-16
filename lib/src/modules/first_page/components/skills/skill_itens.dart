@@ -2,7 +2,7 @@ import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
 import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
 import 'package:ficha_mutante_ano_zero/src/global/skills_list.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
-import 'package:ficha_mutante_ano_zero/src/widgets/primary_button.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/buttons/add_primary_button.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/large_input.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/text_inputs/small_input.dart';
 import 'package:flutter/material.dart';
@@ -67,9 +67,8 @@ class _SkillItemsState extends State<SkillItems> {
                 child: skillItem(SkillList.skills[index], index),
               ),
               SizedBox(height: 12.0),
-              PrimaryButton(
+              AddPrimaryButon(
                 onClick: onCreateItem,
-                content: Text('+'),
               ),
             ],
           );
@@ -107,7 +106,7 @@ class _SkillItemsState extends State<SkillItems> {
                     fontStyle: FontStyle.italic,
                     width: 200,
                     height: 35,
-                    keySharedPrefs: 'custom-$index',
+                    keySharedPrefs: 'CustomSkill:$nome-$index',
                   )
                 : Text(
                     nome,
@@ -117,7 +116,7 @@ class _SkillItemsState extends State<SkillItems> {
                     ),
                   ),
             SmallInput(
-              keySharedPrefs: 'nome-$index',
+              keySharedPrefs: 'SkillValue:$nome-$index',
               bgColor: nome == 'custom'
                   ? AppColors.lightTextOrange
                   : AppColors.textOrange,
