@@ -150,23 +150,23 @@ class _AppWidgetState extends State<AppWidget> {
           },
         ),
       ),
-      body: Screenshot(
-        controller: screenshotController,
-        child: Container(
-          width: 600,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.darkBrown,
-                AppColors.orange.withRed(215),
-              ],
-              stops: [0.03, 1.2],
+      body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        scrollDirection: Axis.vertical,
+        child: Screenshot(
+          controller: screenshotController,
+          child: Container(
+            width: 600,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.darkBrown,
+                  AppColors.orange.withRed(215),
+                ],
+                stops: [0.03, 1.2],
+              ),
             ),
-          ),
-          child: SafeArea(
-            child: SingleChildScrollView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              scrollDirection: Axis.vertical,
+            child: SafeArea(
               child: Column(
                 children: [
                   Stack(
