@@ -10,18 +10,25 @@ class SmallInput extends StatefulWidget {
   final bool hasBorder;
   final double height;
   final double width;
-  final int inputLenght;
+  final int inputLength;
   final Color bgColor;
+  final EdgeInsets padding;
+  final double fontSize;
 
   const SmallInput({
     Key? key,
     this.height = 35.0,
     this.width = 45,
-    this.inputLenght = 2,
+    this.inputLength = 2,
     this.hintText = '',
     this.keySharedPrefs = 'input-none1',
+    this.fontSize = 14,
     this.bgColor = AppColors.textOrange,
     this.hasBorder = true,
+    this.padding = const EdgeInsets.symmetric(
+      vertical: 5.0,
+      horizontal: 12,
+    ),
   }) : super(key: key);
 
   @override
@@ -56,8 +63,10 @@ class _SmallInputState extends State<SmallInput> {
       color: widget.bgColor,
       child: TextField(
         controller: controller,
-        style: TextStyle(fontSize: 14),
-        maxLength: widget.inputLenght,
+        style: TextStyle(
+          fontSize: widget.fontSize,
+        ),
+        maxLength: widget.inputLength,
         keyboardType: TextInputType.number,
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         onChanged: (_) => saveData(),
@@ -66,10 +75,7 @@ class _SmallInputState extends State<SmallInput> {
         decoration: InputDecoration(
           counterText: '',
           focusColor: AppColors.orangeAccent,
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 5.0,
-            horizontal: 12,
-          ),
+          contentPadding: widget.padding,
           hintText: widget.hintText,
           border: widget.hasBorder
               ? OutlineInputBorder(
