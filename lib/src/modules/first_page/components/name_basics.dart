@@ -70,7 +70,7 @@ class BasicsInfo extends StatelessWidget {
                     width: 50.0,
                     height: 45.0,
                     hintText: '18..',
-                    inputLenght: 2,
+                    inputLength: 2,
                   ),
                 )
               ],
