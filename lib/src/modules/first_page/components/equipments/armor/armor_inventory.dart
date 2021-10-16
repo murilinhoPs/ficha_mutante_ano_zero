@@ -3,7 +3,10 @@ import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_s
 import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/armor/armor_item.dart';
 import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/equipments/armor/armor_title.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
+import 'package:ficha_mutante_ano_zero/src/widgets/buttons/add_primary_button.dart';
 import 'package:flutter/material.dart';
+
+const _armorItemsKeyToSave = 'armorInventoryKey';
 
 class ArmorInventory extends StatefulWidget {
   @override
@@ -13,23 +16,36 @@ class ArmorInventory extends StatefulWidget {
 class _ArmorInventoryState extends State<ArmorInventory> {
   int armorItemsLength = 1;
 
-  late var armorContentList = List<ArmorItem>.generate(
-    armorItemsLength,
-    (index) => ArmorItem(keyToSave: '$index'),
-  );
-
   void onLoadList() async {
-    for (var item in armorContentList) {
-      final itemPref = await LocalStorageWrapper.getItem(item.keyToSave);
+    final itemsPref = await LocalStorageWrapper.getItem(_armorItemsKeyToSave);
 
-      if (itemPref != null) {
-        armorContentList.add(item);
-      }
+    if (itemsPref != null) {
+      armorItemsLength = itemsPref;
     }
+  }
+
+  void onCreateArmor() {
+    setState(() => armorItemsLength++);
+
+    LocalStorageWrapper.setItemInt(
+      _armorItemsKeyToSave,
+      armorItemsLength,
+    );
+  }
+
+  @override
+  void initState() {
+    onLoadList();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final armorItemsList = List<ArmorItem>.generate(
+      armorItemsLength,
+      (index) => ArmorItem(keyToSave: '$index'),
+    );
+
     return Material(
       color: AppColors.lightOrange,
       child: BoxContainer(
@@ -45,11 +61,15 @@ class _ArmorInventoryState extends State<ArmorInventory> {
               ),
               child: Column(
                 children: [
-                  ...armorContentList,
-                  // PrimaryButton(
-                  //   onClick: () {},
-                  //   content: Text('+'),
-                  // )
+                  ...armorItemsList,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8.0,
+                    ),
+                    child: AddPrimaryButon(
+                      onClick: onCreateArmor,
+                    ),
+                  ),
                 ],
               ),
             )

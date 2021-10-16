@@ -30,7 +30,7 @@ class ArmorItem extends StatelessWidget {
             padding: EdgeInsets.only(left: 15.0),
             alignment: Alignment.centerLeft,
             child: LargeInput(
-              hintText: 'nome da armadura',
+              hintText: 'nome da armadura...',
               width: 200.0,
               keySharedPrefs: 'armorName-$keyToSave',
               maxLines: 1,
