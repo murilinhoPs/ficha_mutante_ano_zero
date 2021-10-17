@@ -19,19 +19,9 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final screenshotController = ScreenshotController();
 
   late Uint8List _imageFile;
-
-  void _openDrawer() {
-    _scaffoldKey.currentState?.openDrawer();
-    FocusScope.of(context).requestFocus(FocusNode());
-  }
-
-  void _closeDrawer() {
-    Navigator.of(context).pop();
-  }
 
   Future<Uint8List> _generatePdf(PdfPageFormat format) async {
     final doc = pw.Document();
@@ -92,44 +82,49 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      onDrawerChanged: (value) {
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
-      key: _scaffoldKey,
-      backgroundColor: Colors.grey[300],
-      drawer: Drawer(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.darkBrown,
-                AppColors.orange.withRed(215),
-              ],
-              stops: [0.03, 1.2],
-            ),
+      body: _buildScaffoldBody(),
+      bottomNavigationBar: _gradientContainer(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'Outras sessões da ficha',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+          child: BottomNavigationBar(
+            elevation: 0.0,
+            currentIndex: 0,
+            showUnselectedLabels: false,
+            unselectedItemColor: AppColors.lightGrey.withOpacity(0.5),
+            selectedItemColor: AppColors.orange2,
+            backgroundColor: Colors.transparent,
+            onTap: null,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.article_outlined,
                 ),
-                ElevatedButton(
-                  onPressed: _closeDrawer,
-                  child: const Text('Close Drawer'),
+                label: 'Ficha',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person_pin_rounded,
                 ),
-              ],
-            ),
+                label: 'Personagem',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.groups,
+                ),
+                label: 'Party',
+              ),
+            ],
           ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 28.0),
+        padding: const EdgeInsets.only(bottom: 32.0),
         child: FloatingActionButton(
           child: Icon(Icons.save_alt),
           onPressed: () async {
@@ -150,59 +145,63 @@ class _AppWidgetState extends State<AppWidget> {
           },
         ),
       ),
-      body: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        scrollDirection: Axis.vertical,
-        child: Screenshot(
-          controller: screenshotController,
-          child: Container(
-            width: 600,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  AppColors.darkBrown,
-                  AppColors.orange.withRed(215),
-                ],
-                stops: [0.03, 1.2],
-              ),
-            ),
-            child: SafeArea(
+    );
+  }
+
+  Widget _buildScaffoldBody() {
+    return _gradientContainer(
+      child: SafeArea(
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          scrollDirection: Axis.vertical,
+          child: Screenshot(
+            controller: screenshotController,
+            child: _gradientContainer(
               child: Column(
                 children: [
-                  Stack(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                          top: 8.0,
-                          bottom: 12.0,
-                        ),
-                        alignment: Alignment.center,
-                        child: Image(
-                          height: 120,
-                          image: AssetImage('assets/logo.png'),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.menu,
-                            color: AppColors.textOrange,
-                            size: 40.0,
-                          ),
-                          onPressed: _openDrawer,
-                          tooltip: MaterialLocalizations.of(context)
-                              .openAppDrawerTooltip,
-                        ),
-                      ),
-                    ],
-                  ),
+                  _buildAppBar(),
                   FirstPage(),
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _gradientContainer({
+    required Widget child,
+    AlignmentGeometry begin = Alignment.centerLeft,
+    AlignmentGeometry end = Alignment.centerRight,
+  }) {
+    return Container(
+      width: 600,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            AppColors.darkBrown,
+            AppColors.orange.withRed(215),
+          ],
+          stops: [0.02, 1.2],
+          begin: begin,
+          end: end,
+        ),
+      ),
+      child: child,
+    );
+  }
+
+  Widget _buildAppBar() {
+    return Container(
+      padding: EdgeInsets.only(
+        top: 20.0,
+        bottom: 16.0,
+      ),
+      alignment: Alignment.center,
+      child: Image(
+        height: 120,
+        image: AssetImage('assets/logo.png'),
       ),
     );
   }

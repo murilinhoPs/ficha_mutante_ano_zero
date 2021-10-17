@@ -8,13 +8,13 @@ class ProficiencyName extends StatelessWidget {
   final String keyToSave;
   final double fontSize;
 
-  const ProficiencyName({
-    Key? key,
-    required this.keyToSave,
-    this.fontSize = 12.0,
-    this.fontWeight = FontWeight.normal,
-    this.placeholderText = 'nome do talento...'
-  }) : super(key: key);
+  const ProficiencyName(
+      {Key? key,
+      required this.keyToSave,
+      this.fontSize = 12.0,
+      this.fontWeight = FontWeight.normal,
+      this.placeholderText = 'nome do talento...'})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +30,15 @@ class ProficiencyName extends StatelessWidget {
           ),
         ),
       ),
-      child: Row(
-        children: [
-          Container(
-            padding: EdgeInsets.only(left: 8.0),
-            alignment: Alignment.centerLeft,
-            child: LargeInput(
-              hintText: placeholderText,
-              width: 280.0,
-              keySharedPrefs: 'proficiencyName-$keyToSave',
-              maxLines: 1,
-            ),
-          ),
-        ],
+      child: Container(
+        padding: EdgeInsets.only(left: 8.0),
+        alignment: Alignment.centerLeft,
+        child: LargeInput(
+          hintText: placeholderText,
+          width: 280.0,
+          keySharedPrefs: 'proficiencyName-$keyToSave',
+          maxLines: 1,
+        ),
       ),
     );
   }
