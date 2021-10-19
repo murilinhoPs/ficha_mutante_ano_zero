@@ -31,7 +31,7 @@ class BasicsInfo extends StatelessWidget {
 
   Widget nameAge() {
     return Padding(
-      padding: const EdgeInsets.only(left: 7.0, right: 7.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -83,7 +83,7 @@ class BasicsInfo extends StatelessWidget {
 
   Widget role() {
     return Padding(
-      padding: const EdgeInsets.only(left: 7.0, right: 7.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
