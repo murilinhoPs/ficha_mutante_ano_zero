@@ -3,7 +3,8 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
-import 'package:ficha_mutante_ano_zero/src/modules/first_page/first_page.dart';
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/character_sheet/character_sheet.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/custom_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -128,7 +129,7 @@ class _AppWidgetState extends State<AppWidget> {
         child: FloatingActionButton(
           child: Icon(Icons.save_alt),
           onPressed: () async {
-            // LocalStorageWrapper.deleteAll();
+            LocalStorageWrapper.deleteAll();
             try {
               final image = await screenshotController.capture();
 
@@ -160,7 +161,7 @@ class _AppWidgetState extends State<AppWidget> {
               child: Column(
                 children: [
                   _buildAppBar(),
-                  FirstPage(),
+                  CharacterSheet(),
                 ],
               ),
             ),

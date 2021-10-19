@@ -1,5 +1,5 @@
 import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
-import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/conditions/wounds.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/character_sheet/components/conditions/wounds.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/box_container.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_marks_wrapper.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/content_header.dart';

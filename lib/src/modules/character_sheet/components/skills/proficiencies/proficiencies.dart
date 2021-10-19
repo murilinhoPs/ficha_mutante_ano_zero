@@ -1,36 +1,36 @@
 import 'package:ficha_mutante_ano_zero/src/global/colors.dart';
 import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
-import 'package:ficha_mutante_ano_zero/src/modules/first_page/components/inventory/equipment/equipment_name.dart';
+import 'package:ficha_mutante_ano_zero/src/modules/character_sheet/components/skills/proficiencies/proficiency_name.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/buttons/add_primary_button.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/content_header.dart';
 import 'package:flutter/material.dart';
 
-const _itemsKeyToSave = 'itemsKeySave';
+const _proficiencyKeyToSave = 'proficiencyKeySave';
 
-class EquipmentItems extends StatefulWidget {
-  const EquipmentItems({Key? key}) : super(key: key);
+class Proficiencies extends StatefulWidget {
+  const Proficiencies({Key? key}) : super(key: key);
 
   @override
-  _EquipmentItemsState createState() => _EquipmentItemsState();
+  _ProficienciesState createState() => _ProficienciesState();
 }
 
-class _EquipmentItemsState extends State<EquipmentItems> {
-  int itemsLength = 1;
+class _ProficienciesState extends State<Proficiencies> {
+  int proficienciesLength = 1;
 
   void onLoadList() async {
-    final itemsPref = await LocalStorageWrapper.getItem(_itemsKeyToSave);
+    final itemsPref = await LocalStorageWrapper.getItem(_proficiencyKeyToSave);
 
     if (itemsPref != null) {
-      itemsLength = itemsPref;
+      proficienciesLength = itemsPref;
     }
   }
 
-  void onAddItem() {
-    setState(() => itemsLength++);
+  void onAddProficiency() {
+    setState(() => proficienciesLength++);
 
     LocalStorageWrapper.setItemInt(
-      _itemsKeyToSave,
-      itemsLength,
+      _proficiencyKeyToSave,
+      proficienciesLength,
     );
   }
 
@@ -42,12 +42,10 @@ class _EquipmentItemsState extends State<EquipmentItems> {
 
   @override
   Widget build(BuildContext context) {
-    final armorItemsList = List<EquipmentName>.generate(
-      itemsLength,
-      (index) => EquipmentName(
+    final armorItemsList = List<ProficiencyName>.generate(
+      proficienciesLength,
+      (index) => ProficiencyName(
         keyToSave: '$index',
-        itemIndexName: '$index',
-        placeholderText: 'nome da equipamento...',
       ),
     );
 
@@ -57,26 +55,18 @@ class _EquipmentItemsState extends State<EquipmentItems> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ContentHeader(
-            title: 'Equipamento',
-            icon: Icons.backpack,
+            title: 'Talentos',
+            icon: Icons.task,
             iconBackground: AppColors.darkGrey,
             iconColor: AppColors.lightTextOrange,
           ),
           ...armorItemsList,
-          EquipmentName(
-            isSmall: true,
-            keyToSave: 'bullets',
-            placeholderText: 'quantidade de balas',
-            itemIndexName: 'Balas',
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 8.0,
             ),
             child: AddPrimaryButon(
-              onClick: onAddItem,
+              onClick: onAddProficiency,
             ),
           ),
         ],
