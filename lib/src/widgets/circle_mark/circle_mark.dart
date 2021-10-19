@@ -60,10 +60,12 @@ class _CircleMarkState extends State<CircleMark> {
       },
       child: Container(
         margin: EdgeInsets.all(widget.margin),
-        width: 25.0,
-        height: 25.0,
+        width: 24.0,
+        height: 24.0,
         decoration: BoxDecoration(
-          color: AppColors.textOrange,
+          color: widget.canSave || circleMarkController.hasClicked
+              ? AppColors.textOrange
+              : Colors.black.withOpacity(0.54),
           borderRadius: BorderRadius.circular(50.0),
         ),
         alignment: Alignment.center,

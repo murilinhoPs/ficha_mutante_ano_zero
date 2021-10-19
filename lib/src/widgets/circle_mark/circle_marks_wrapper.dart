@@ -1,3 +1,4 @@
+import 'package:ficha_mutante_ano_zero/src/global/services/local_storage/local_storage_wrapper.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_mark.dart';
 import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/circle_mark_changed_notification.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,13 @@ class CircleMarksWrapper extends StatefulWidget {
 class _CircleMarksWrapperState extends State<CircleMarksWrapper> {
   int selectedIndex = 0;
 
-  late var hasClickedMarks = List<bool>.filled(widget.itemsCount, false);
+  late List<bool> hasClickedMarks = [];
+
+  @override
+  void initState() {
+    populateHasClickedMarks();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +44,7 @@ class _CircleMarksWrapperState extends State<CircleMarksWrapper> {
             return true;
           },
           child: CircleMark(
-            keySharedPrefs: '${widget.parentName}-$index',
+            keySharedPrefs: '${widget.parentName}$index',
             margin: widget.circleMarkMargin,
             canSave: canSave(index),
             onClickToSave: () {
@@ -49,13 +56,35 @@ class _CircleMarksWrapperState extends State<CircleMarksWrapper> {
     );
   }
 
+  void populateHasClickedMarks() async {
+    for (var index = 0; index < widget.itemsCount; index++) {
+      final prefBool = await LocalStorageWrapper.getItem(
+        '${widget.parentName}$index',
+      );
+
+      hasClickedMarks.add(prefBool ?? false);
+
+      if (hasClickedMarks[index]) {
+        selectedIndex = index;
+      }
+    }
+
+    // for(var hasClickedMark in hasClickedMarks){
+    //   while(hasClickedMark){
+    //
+    //   }
+    // }
+  }
+
   bool canSave(int index) =>
       selectedIndex == index || selectedIndex - 1 == index;
 
   void onSave(int index) {
     if (canSave(index)) {
       hasClickedMarks[index]
-          ? setState(() => selectedIndex--)
+          ? selectedIndex <= 0
+              ? setState(() => selectedIndex = 0)
+              : setState(() => selectedIndex--)
           : setState(() => selectedIndex++);
     }
   }
