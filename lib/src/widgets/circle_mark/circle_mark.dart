@@ -6,15 +6,17 @@ import 'package:ficha_mutante_ano_zero/src/widgets/circle_mark/controller/circle
 import 'package:flutter/material.dart';
 
 class CircleMark extends StatefulWidget {
+  final bool canClick;
+  final bool isEnabled;
   final double margin;
   final String keySharedPrefs;
-  final bool canSave;
   final VoidCallback onClickToSave;
 
   const CircleMark({
     Key? key,
     required this.margin,
-    required this.canSave,
+    required this.canClick,
+    required this.isEnabled,
     required this.keySharedPrefs,
     required this.onClickToSave,
   }) : super(key: key);
@@ -52,18 +54,18 @@ class _CircleMarkState extends State<CircleMark> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        if (!widget.canClick) return;
+
         widget.onClickToSave();
 
-        if (widget.canSave) {
-          saveDataOnClick();
-        }
+        saveDataOnClick();
       },
       child: Container(
         margin: EdgeInsets.all(widget.margin),
         width: 24.0,
         height: 24.0,
         decoration: BoxDecoration(
-          color: widget.canSave || circleMarkController.hasClicked
+          color: widget.isEnabled
               ? AppColors.textOrange
               : Colors.black.withOpacity(0.54),
           borderRadius: BorderRadius.circular(50.0),
