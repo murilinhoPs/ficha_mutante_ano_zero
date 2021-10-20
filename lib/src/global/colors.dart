@@ -13,6 +13,8 @@ class AppColors {
 
   static const lightTextOrange = Color(0xFFFCF1E7);
 
+  static const lightOrangeShimmer = Color(0xFFFFFAF8);
+
   static const lightBrown = Color(0xFFA0602B);
 
   static const darkBrown = Color(0xff553B1E);
