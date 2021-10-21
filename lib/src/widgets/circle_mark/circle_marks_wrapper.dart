@@ -115,7 +115,7 @@ class _CircleMarksWrapperState extends State<CircleMarksWrapper> {
   }
 
   bool canClick(int index) =>
-      selectedIndex == index || selectedIndex < index + 1;
+      (selectedIndex == index || selectedIndex < index + 1) && isEnabled(index);
 
   bool isEnabled(int index) => index > 0 ? hasClickedMarks[index - 1] : true;
 
